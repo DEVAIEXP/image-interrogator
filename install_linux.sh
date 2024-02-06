@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-use_venv=1
+USE_VENV=1
 delimiter="################################################################"
-# config
-HOME_DIR=$( getent passwd "$USER" | cut -d: -f6 )
 REPOSITORIES_DIR="$(pwd)/repositories"
-ENV_DIR="./venv"
+VENV_DIR="./venv"
 
 if [[ -z "${python_cmd}" ]]
 then
@@ -24,7 +22,7 @@ else
     exit 1	
 fi
 
-if [[ $use_venv -eq 1 ]] && ! "${python_cmd}" -c "import venv" &>/dev/null
+if [[ $USE_VENV -eq 1 ]] && ! "${python_cmd}" -c "import venv" &>/dev/null
 then
     printf "\n%s\n" "${delimiter}"
     printf "\e[1m\e[31mERROR: python3-venv is not installed, aborting...\e[0m"
@@ -32,17 +30,17 @@ then
     exit 1
 fi
 
-if [[ $use_venv -eq 1 ]] && [[ -z "${VIRTUAL_ENV}" ]];
+if [[ $USE_VENV -eq 1 ]] && [[ -z "${VIRTUAL_ENV}" ]];
 then    
-    if [[ ! -d "${ENV_DIR}" ]]
+    if [[ ! -d "${VENV_DIR}" ]]
     then
         printf "\n%s\n" "${delimiter}"
         printf "Creating python venv"
         printf "\n%s\n" "${delimiter}"
-        "${python_cmd}" -m venv "${ENV_DIR}"        
+        "${python_cmd}" -m venv "${VENV_DIR}"        
     fi
     
-    if [[ -f "${ENV_DIR}"/bin/activate ]]
+    if [[ -f "${VENV_DIR}"/bin/activate ]]
     then        
         printf "Activating python venv"
         printf "\n%s\n" "${delimiter}"

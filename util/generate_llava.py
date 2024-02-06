@@ -152,7 +152,7 @@ def generate_captions(model_name, prompt, check_dataset, dataset_name, images, l
     
     t = datetime.datetime.now()
     image_path = os.path.join(os.getcwd(),'outputs','images',f"{t.year}-{t.month:02d}-{t.day:02d}", dataset_name)
-    dataset_path = os.path.join(os.getcwd(),'outputs','datasets', dataset_name)
+    dataset_path = os.path.join(image_path,'dataset')
     
     if os.path.exists(image_path):
         shutil.rmtree(image_path)

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import subprocess
 import torch
 import csv
 import json
@@ -12,8 +13,8 @@ from util.gui import (
     open_folder)
 from clip_interrogator import Config, Interrogator, list_caption_models, list_clip_models
 from util.generate import generate_captions
-from util.cleanup import memory_cleanup
-from util.memory import get_reserved_memory, get_used_memory, get_total_memory
+from util.util import memory_cleanup,get_reserved_memory, get_used_memory, get_total_memory, has_win_os
+
 
 try:
     import gradio as gr
@@ -110,57 +111,87 @@ def prep_test_folder():
     return test_path
 
 def test_all_caption_models(image, load_mode, device):
-    global tested_models_count, session_tested_models_count
-    total_models_count = len(list_caption_models())
-    test_path = prep_test_folder()
-    csv_file = f"{test_path}/model_caption_test_results.csv"
-    tested_combinations = load_tested_combinations(csv_file)
-    load_config()    
-    initial_used_memory = get_used_memory()
-    for caption_model in sorted(sorted(list_caption_models(), key=lambda t: t[1]), key=lambda t: t[0], reverse=False):   
-        question_prompt_text = get_question_prompt(caption_model)     
-        if (caption_model) not in tested_combinations:
-            caption = image_to_prompt(image=image, question_prompt=question_prompt_text, generate_features=False, check_dataset=False, dataset_name='Test', feature_mode=None, 
-                                       precision_type='FP16', load_mode=load_mode, clip_model_name=None, caption_model_name=caption_model, device=device,
-                                      temperature=0.2, top_p=0.7, max_new_tokens=0, check_txt_caption=False, check_lowvram=False, check_only_caption=True, test_mode=True)  
-            caption_used_memory = get_used_memory()
-            used_memory = round((caption_used_memory - initial_used_memory) + 0.1,1) 
-            log_caption_to_csv(csv_file, caption_model, caption[1], used_memory)
-            session_tested_models_count += 1            
-        else:
-            tested_models_count += 1
+    try:
+        global tested_models_count, session_tested_models_count
+        if not image:
+            raise Exception("Images must be provided!")
+            
+        total_models_count = len(list_caption_models())
+        test_path = prep_test_folder()
+        csv_file = f"{test_path}/model_caption_test_results.csv"
+        tested_combinations = load_tested_combinations(csv_file)
+        load_config()    
+        initial_used_memory = get_used_memory()
+        for caption_model in sorted(sorted(list_caption_models(), key=lambda t: t[1]), key=lambda t: t[0], reverse=False):   
+            question_prompt_text = get_question_prompt(caption_model)     
+            if (caption_model) not in tested_combinations:
+                caption = image_to_prompt(image=image, question_prompt=question_prompt_text, generate_features=False, check_dataset=False, dataset_name='Test', feature_mode=None, 
+                                        precision_type='FP16', load_mode=load_mode, clip_model_name=None, caption_model_name=caption_model, device=device,
+                                        temperature=0.2, top_p=0.7, max_new_tokens=0, check_txt_caption=False, check_lowvram=False, check_only_caption=True, test_mode=True)  
+                caption_used_memory = get_used_memory()
+                used_memory = round((caption_used_memory - initial_used_memory) + 0.1,1) 
+                log_caption_to_csv(csv_file, caption_model, caption[1], used_memory)
+                session_tested_models_count += 1            
+            else:
+                tested_models_count += 1
+            memory_cleanup()
+            # Displaying the counts
+            print(f"Previously tested models: {tested_models_count}")
+            print(f"Tested in current session: {session_tested_models_count}")
+            print(f"Models left to test: {total_models_count - tested_models_count - session_tested_models_count}")
+            
+        if has_win_os():
+            subprocess.run(fr'explorer.exe "outputs\tests"', shell=True)
+            
+        status = "Test process completed!"
+    except:
+        status="Something went wrong while process caption test."
+        print(status)
+        traceback.print_exc()
         memory_cleanup()
-        # Displaying the counts
-        print(f"Previously tested models: {tested_models_count}")
-        print(f"Tested in current session: {session_tested_models_count}")
-        print(f"Models left to test: {total_models_count - tested_models_count - session_tested_models_count}")
+    return status
          
 def test_all_clip_models(image, caption_model_name, load_mode, feature_mode, device):
-    global tested_models_count, session_tested_models_count
-    test_path = prep_test_folder()
-    total_models_count = len(list_clip_models())
-    csv_file = f"{test_path}/model_clip_test_results.csv"
-    tested_combinations = load_tested_combinations(csv_file)
-    load_config()
-    current_caption_model = caption_model_name
-    initial_used_memory = get_used_memory()
-    for clip_model in sorted(sorted(list_clip_models(), key=lambda t: t[1]), key=lambda t: t[0], reverse=True):        
-        if (current_caption_model, clip_model) not in tested_combinations:
-            question_prompt_text = get_question_prompt(current_caption_model)
-            caption = image_to_prompt(image=image, question_prompt=question_prompt_text, generate_features=True, check_dataset=False, dataset_name='Test', feature_mode=feature_mode, 
-                                       precision_type='FP16', load_mode=load_mode, clip_model_name=clip_model, caption_model_name=current_caption_model, device=device,
-                                      temperature=0.2, top_p=0.7, max_new_tokens=0, check_txt_caption=False, check_lowvram=False, check_only_caption=True, test_mode=True) 
-            clip_used_memory = get_used_memory()
-            used_memory = round((clip_used_memory - initial_used_memory - get_caption_model_vram(load_mode, caption_model_name)) + 0.1,1) 
-            log_clip_to_csv(csv_file, current_caption_model, clip_model, caption, used_memory)
-            session_tested_models_count += 1            
-        else:
-            tested_models_count += 1
+    try:
+        if not image:
+            raise Exception("Images must be provided!")
+        
+        global tested_models_count, session_tested_models_count
+        test_path = prep_test_folder()
+        total_models_count = len(list_clip_models())
+        csv_file = f"{test_path}/model_clip_test_results.csv"
+        tested_combinations = load_tested_combinations(csv_file)
+        load_config()
+        current_caption_model = caption_model_name
+        initial_used_memory = get_used_memory()
+        for clip_model in sorted(sorted(list_clip_models(), key=lambda t: t[1]), key=lambda t: t[0], reverse=True):        
+            if (current_caption_model, clip_model) not in tested_combinations:
+                question_prompt_text = get_question_prompt(current_caption_model)
+                caption = image_to_prompt(image=image, question_prompt=question_prompt_text, generate_features=True, check_dataset=False, dataset_name='Test', feature_mode=feature_mode, 
+                                        precision_type='FP16', load_mode=load_mode, clip_model_name=clip_model, caption_model_name=current_caption_model, device=device,
+                                        temperature=0.2, top_p=0.7, max_new_tokens=0, check_txt_caption=False, check_lowvram=False, check_only_caption=True, test_mode=True) 
+                clip_used_memory = get_used_memory()
+                used_memory = round((clip_used_memory - initial_used_memory - get_caption_model_vram(load_mode, caption_model_name)) + 0.1,1) 
+                log_clip_to_csv(csv_file, current_caption_model, clip_model, caption, used_memory)
+                session_tested_models_count += 1            
+            else:
+                tested_models_count += 1
+            memory_cleanup()
+            # Displaying the counts
+            print(f"Previously tested models: {tested_models_count}")
+            print(f"Tested in current session: {session_tested_models_count}")
+            print(f"Models left to test: {total_models_count - tested_models_count - session_tested_models_count}")
+        
+        if has_win_os():
+            subprocess.run(fr'explorer.exe "outputs\tests"', shell=True)
+        
+        status = "Test process completed!"
+    except:
+        status="Something went wrong while process CLIP test."
+        print(status)
+        traceback.print_exc()
         memory_cleanup()
-        # Displaying the counts
-        print(f"Previously tested models: {tested_models_count}")
-        print(f"Tested in current session: {session_tested_models_count}")
-        print(f"Models left to test: {total_models_count - tested_models_count - session_tested_models_count}")
+    return status
 
 def load_config(caption_model_name='blip-large', 
                 clip_model_name ='ViT-L-14/openai', 
@@ -295,7 +326,7 @@ def get_clip_model_vram(clip_model, feature_mode):
     
 def get_models_vram(toggle_load_mode, caption_model, clip_model=None, feature_mode=None) :
 
-    VRAM1 = get_caption_model_vram(toggle_load_mode,  caption_model)
+    VRAM1 = get_caption_model_vram(toggle_load_mode, caption_model)
     VRAM2 = get_clip_model_vram(clip_model, feature_mode)
     
     if VRAM1 or VRAM2:
@@ -387,6 +418,10 @@ def image_to_prompt(image,
         print_settings(precision_type, load_mode, device, check_lowvram, generate_features, check_only_caption, check_txt_caption, check_dataset, dataset_name, caption_model_name, temperature, top_p,max_new_tokens, clip_model_name, feature_mode, question_prompt)
         validate_reload(caption_model_name, clip_model_name, check_lowvram, device, generate_features, _precision_type, load_4bit, load_8bit)                                  
         prompt = generate_captions(ci, feature_mode, question_prompt, temperature, top_p, max_new_tokens, check_dataset, dataset_name, [image], check_txt_caption, check_only_caption, test_mode)
+        
+        if not test_mode and has_win_os():            
+            subprocess.run(fr'explorer.exe "outputs\images"', shell=True)            
+        
         status ="Image process completed!"         
         print(status)       
         return [status, prompt]       
@@ -444,6 +479,10 @@ def batch_process(folder,
         print_settings(precision_type, load_mode, device, check_lowvram, generate_features, check_only_caption, check_txt_caption, check_dataset, dataset_name, caption_model_name, temperature, top_p,max_new_tokens, clip_model_name, feature_mode, question_prompt)
         validate_reload(caption_model_name, clip_model_name, check_lowvram, device, generate_features, _precision_type, load_4bit, load_8bit)                                
         generate_captions(ci, feature_mode, question_prompt, temperature, top_p, max_new_tokens, check_dataset, dataset_name, images, check_txt_caption, check_only_caption)
+        
+        if has_win_os():
+            subprocess.run(fr'explorer.exe "outputs\images"', shell=True)
+        
         status ="Image process completed!"         
         print(status)       
         return status
@@ -515,24 +554,28 @@ def prompt_tab():
                 feature_mode = gr.Radio(['best', 'fast', 'classic', 'negative'], label='Feature Mode', min_width=400, value='classic', visible=False)                                                   
 
         features_elements = [clip_model, feature_mode, features_options_row]
-        def update_features_elements(check_include_features):            
+        def update_features_elements(check_include_features, load_mode_value, caption_model_value, clip_model_value, feature_mode):            
             outputs=[]
             outputs.append(gr.update(visible=check_include_features))    
             outputs.append(gr.update(visible=check_include_features, choices=['best', 'fast', 'classic', 'negative'], value='classic'))    
-            outputs.append(gr.update(visible=check_include_features))    
-            return outputs       
+            outputs.append(gr.update(visible=check_include_features))              
+            lb_load_mode = update_load_mode(check_include_features, load_mode_value, caption_model_value, clip_model_value, feature_mode)            
+            return lb_load_mode, *outputs       
         
         check_include_features.change(
             fn=update_features_elements,
-            inputs=[check_include_features],
-            outputs=[*features_elements])    
+            inputs=[check_include_features, load_mode, caption_model, clip_model, feature_mode],
+            outputs=[lb_load_mode, *features_elements])    
         
-        def update_load_mode(toggle_load_mode, caption_model, clip_model=None,feature_mode=None):                      
-            return get_models_vram(toggle_load_mode, caption_model, clip_model, feature_mode)           
+        def update_load_mode(check_include_features, toggle_load_mode, caption_model, clip_model, feature_mode):     
+            if(check_include_features):                  
+                return get_models_vram(toggle_load_mode, caption_model, clip_model, feature_mode)  
+            else:
+                return get_models_vram(toggle_load_mode, caption_model, None, None)                           
         
         caption_elements=[load_mode, precision_type, top_p, temperature, question_prompt]
-        def update_caption_options(load_mode_value, precision_type_value, caption_model_value):
-            lb_load_mode = update_load_mode(load_mode_value, caption_model_value)
+        def update_caption_options(check_include_features, load_mode_value, precision_type_value, caption_model_value, clip_model_value, feature_mode):
+            lb_load_mode = update_load_mode(check_include_features, load_mode_value, caption_model_value, clip_model_value, feature_mode )
             show_elements = True if caption_model_value.startswith("llava") else False
             show_prompt = True if (caption_model_value.startswith("llava") 
                                    or caption_model_value.startswith("kosmos-2") 
@@ -560,16 +603,26 @@ def prompt_tab():
                 
         load_mode.change(
             fn=update_load_mode,
-            inputs=[load_mode, caption_model],
+            inputs=[check_include_features, load_mode, caption_model, clip_model, feature_mode],
             outputs=[lb_load_mode]
         )
         
         caption_model.change(
             fn=update_caption_options,
-            inputs=[load_mode, precision_type, caption_model],
+            inputs=[check_include_features, load_mode, precision_type, caption_model, clip_model, feature_mode],
             outputs=[lb_load_mode, *caption_elements]
         )
-               
+        
+        clip_model.change(
+            fn=update_load_mode,
+            inputs=[check_include_features, load_mode, caption_model, clip_model, feature_mode],
+            outputs=[lb_load_mode]
+        )
+        feature_mode.change(
+            fn=update_load_mode,
+            inputs=[check_include_features, load_mode, caption_model, clip_model, feature_mode],
+            outputs=[lb_load_mode]
+        )
         prompt = gr.Textbox(label="Generated prompt for single image")
         status = gr.Textbox(label="Processing status")
         generate_button = gr.Button("Generate prompt for single image")
@@ -578,9 +631,9 @@ def prompt_tab():
         batch_button.click(batch_process, inputs=[folder_path, question_prompt, check_include_features, check_dataset, dataset_name, feature_mode, precision_type, load_mode, clip_model, caption_model,devices, temperature, top_p, max_new_tokens, check_txt_caption, check_lowvram, check_only_caption], outputs=status)
         with gr.Row():
             test_all_caption_models_button = gr.Button("Test all caption models")
-            test_all_caption_models_button.click(test_all_caption_models, inputs=[image, load_mode, devices], outputs=[])      
+            test_all_caption_models_button.click(test_all_caption_models, inputs=[image, load_mode, devices], outputs=status)      
             test_all_clip_models_button = gr.Button("Test all CLIP models")
-            test_all_clip_models_button.click(test_all_clip_models, inputs=[image, caption_model, load_mode, feature_mode, devices], outputs=[])      
+            test_all_clip_models_button.click(test_all_clip_models, inputs=[image, caption_model, load_mode, feature_mode, devices], outputs=status)      
           
 def analyze_tab():
     with gr.Column():

@@ -166,3 +166,5 @@ tests
 repositories
 repositories_
 venv
+stdout.txt
+stderr.txt

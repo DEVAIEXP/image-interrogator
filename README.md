@@ -1,4 +1,4 @@
-# image-interrogator
+# IMAGE-interrogator
 
 *Want to improve your SOTA image captioning experience for Stable Diffusion? The **IMAGE Interrogator** is here to make this job easier!*
 
@@ -30,9 +30,10 @@ cd image-interrogator
 The *start.sh* and *start.bat* scripts trigger the image-interrogator.py script via Python. The python script allows you to enter some parameters:
 * `--cache-dir`: Folder to download cache models. If specified, models will be fully downloaded to the specified path instead of the HF cache.
 * `--share`: Create a public access link
-Edit this files and change line 5, for e.g:
+Edit this files and change last line, for e.g:
 ```bash
-python image-interrogator.py --cache-dir "/mnt/c/models" --share
+(for linux  ) python image-interrogator.py --cache-dir "/mnt/c/models" --share
+(for windows) python image-interrogator.py --cache-dir "c:\models" --share
 ```
 Note: The linux script is configured to run on WSL 2. If you are running on a linux installation you will need to adjust the LD_LIBRARY_PATH variable in the file with the correct path of your CUDA Toolkit.
 
@@ -65,3 +66,6 @@ For selection of OpenCLIP pretrained CLIP Model. Only one feature mode can selec
 
 ## Prompt tab
 It returns a list of words in each feature and their scores for the given image, model.
+
+## Others
+If you update the version of LLaVa, Gradio and PIL dependencies, this tool will not work correctly. When there is a need to update these dependencies, we will update them in our repository. Whenever there is a new update to this repository, it will be necessary to delete the 'repositories' directory and run the installation script again.

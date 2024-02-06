@@ -15,7 +15,7 @@ def generate_captions(ci, mode, question_prompt, temperature, top_p, caption_max
     
     t = datetime.datetime.now()
     image_path = os.path.join(os.getcwd(),'outputs','images',f"{t.year}-{t.month:02d}-{t.day:02d}", dataset_name)
-    dataset_path = os.path.join(os.getcwd(),'outputs','datasets', dataset_name)
+    dataset_path = os.path.join(image_path,'dataset')
     
     if not test_mode:
         if os.path.exists(image_path):

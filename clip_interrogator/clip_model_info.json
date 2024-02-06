@@ -1,0 +1,5 @@
+{
+    "data":[
+        {"model": "RN50/openai","feature_mode": "fast","VRAM":0.3}
+    ]
+}

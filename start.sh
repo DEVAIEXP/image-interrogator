@@ -2,11 +2,11 @@ export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_m
 export CUDA_VISIBLE_DEVICES=0
 export LD_LIBRARY_PATH=/usr/lib/wsl/lib
 
-use_venv=1
+USE_VENV=1
 delimiter="################################################################"
 VENV_DIR="./venv"
 
-if [[ $use_venv -eq 1 ]] && [[ -z "${VIRTUAL_ENV}" ]];
+if [[ $USE_VENV -eq 1 ]] && [[ -z "${VIRTUAL_ENV}" ]];
 then    
     if [[ ! -d "${VENV_DIR}" ]]
     then
@@ -33,4 +33,4 @@ else
     printf "\n%s\n" "${delimiter}"
 fi
 
-python image-interrogator.py --cache-dir "/mnt/c/models/caption"
+python image-interrogator.py

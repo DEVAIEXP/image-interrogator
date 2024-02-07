@@ -13,20 +13,33 @@ The **IMAGE Interrogator** is a variant of the original [CLIP Interrogator](http
 Use Python version 3.10.* and have the Python virtual environment installed. 
 Then run the following commands in the terminal:
 ```bash
-git clone https://github.com/pharmapsychotic/clip-interrogator
+git clone https://github.com/DEVAIEXP/image-interrogator.git
 cd image-interrogator
 (for linux  ) source install_linux.sh
 (for windows) install_windows.bat
 ```
-
+### Aditional parameters for installation scripts:
+Assuming **T** for True and **F** for False:
+* Passing T on first parameter will force deletion of the Venv and repositories folders for a clean installation.
+```bash
+(for linux  ) source install_linux.sh T
+(for windows) install_windows.bat T
+````
+* Passing T on second parameter will disable use of Venv during installation.
+```bash
+(for linux  ) source install_linux.sh F T
+(for windows) install_windows.bat F T
+````
 ## Running
-
+**If you ran the installation without Venv, you must edit the script files and change the USE_VENV variable to the value 0 before starting to run the tool.**
 ```bash
 (for linux  ) source start.sh
 (for windows) start.bat
 ```
 
 ## Running with customization
+
+
 The *start.sh* and *start.bat* scripts trigger the image-interrogator.py script via Python. The python script allows you to enter some parameters:
 * `--cache-dir`: Folder to download cache models. If specified, models will be fully downloaded to the specified path instead of the HF cache.
 * `--share`: Create a public access link
@@ -35,6 +48,8 @@ Edit this files and change last line, for e.g:
 (for linux  ) python image-interrogator.py --cache-dir "/mnt/c/models" --share
 (for windows) python image-interrogator.py --cache-dir "c:\models" --share
 ```
+
+
 Note: The linux script is configured to run on WSL 2. If you are running on a linux installation you will need to adjust the LD_LIBRARY_PATH variable in the file with the correct path of your CUDA Toolkit.
 
 IMAGE Interrogator support **4-bit** quantization and **8-bit** quantization (except for CogVLM and CogAgent only 4-bit quantization is enabled) for low memory usage. Precision type parameters have also been added to the interface such as **FP16** and **BF16**. On systems with low VRAM you can try 4-bit quantization or check `Optimize settings for low VRAM` in Load options from interface. It will reduce the amount of VRAM needed (at the cost of some speed and quality). 
@@ -46,7 +61,7 @@ IMAGE Interrogator support **4-bit** quantization and **8-bit** quantization (ex
 ### Generate options
 
 The `Generate options` lets you enable/disable resources that may be generated during or after the prompt is generated. 
-* `Include image features in the prompt`: enable the Features tab where it is possible to select OpenCLIP pretrained CLIP models. It will add image analysis result features such as (artists, flavors, media, movements, trends, negative prompt). Note: for negative prompts, the caption model will be ignored.
+* `Include image features in the prompt`: Enable the Features tab where it is possible to select OpenCLIP pretrained CLIP models. It will add image analysis result features such as (artists, flavors, media, movements, trends, negative prompt). Note: for negative prompts, the caption model will be ignored.
 * `Don't save dataset images`: This will disable copying of the image in the caption output path.
 * `Generate individual caption file`: When enabled, this generates individual '.txt' caption files for each image.
 * `Generate dataset`: This will compile a dataset into the output path so that it can be loaded into hugging-face datasets or used in model training.

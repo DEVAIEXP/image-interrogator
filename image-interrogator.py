@@ -214,8 +214,7 @@ def load_config(caption_model_name='blip-large',
                         load_8bit=load_8bit)
     else:
         config = Config(caption_model_name=caption_model_name, 
-                        clip_model_name=clip_model_name,
-                        device=_device,                         
+                        clip_model_name=clip_model_name,                                                 
                         generate_features=generate_features, 
                         dtype = precision_type,
                         load_4bit=load_4bit,

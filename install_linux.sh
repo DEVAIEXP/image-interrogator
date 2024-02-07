@@ -6,6 +6,19 @@ delimiter="################################################################"
 REPOSITORIES_DIR="$(pwd)/repositories"
 VENV_DIR="./venv"
 
+if [[ "$1" == 'T' ]]
+then
+    printf "Cleaning virtual env and repositories folder."
+    rm -rf repositories >stdout.txt 2>stderr.txt
+    rm -rf venv >stdout.txt 2>stderr.txt
+fi
+
+if [[ "$2" == 'F' ]]
+then
+    USE_VENV=0
+    printf "You chose not to use venv..." 
+fi
+
 if [[ -z "${python_cmd}" ]]
 then
     python_cmd="python3"
@@ -42,8 +55,7 @@ then
     
     if [[ -f "${VENV_DIR}"/bin/activate ]]
     then        
-        printf "Activating python venv"
-        printf "\n%s\n" "${delimiter}"
+        printf "Activating python venv"        
         source venv/bin/activate        
     else
         printf "\n%s\n" "${delimiter}"
@@ -87,8 +99,5 @@ printf "\n%s\n" "${delimiter}"
 printf "Patching Gradio..."
 cp -f ./patches/Gradio/image.py ./venv/lib64/"$(ls ./venv/lib64)"/site-packages/gradio/components
 printf "\n%s\n" "${delimiter}"
-printf "All done!"
+printf "All done! Launch 'start.sh'"
 printf "\n%s\n" "${delimiter}"
-printf "Launching image-interrogator..."
-printf "\n%s\n" "${delimiter}"
-./start.sh

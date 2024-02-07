@@ -4,10 +4,11 @@ SET USE_VENV=1
 SET REPOSITORIES_DIR="repositories"
 SET VENV_DIR=%~dp0%venv
 
-if %1 == T (
+if ["%1"] == ["T"] (
     echo Cleaning virtual env and repositories folder. 
     rmdir /s /q repositories >stdout.txt 2>stderr.txt
     rmdir /s /q venv >stdout.txt 2>stderr.txt
+    pause
 )
 
 if ["%2"] == ["F"] (
@@ -20,12 +21,11 @@ if not defined PYTHON (set PYTHON=python)
 dir "%VENV_DIR%\Scripts\Python.exe" >stdout.txt 2>stderr.txt
 if %ERRORLEVEL% == 0 goto :end
 
+if ["%USE_VENV%"] == ["0"] goto :skip_venv
+
 for /f "delims=" %%i in ('CALL %PYTHON% -c "import sys; print(sys.executable)"') do set PYTHON_FULLNAME="%%i"
 echo Creating python venv dir %VENV_DIR% in using python %PYTHON_FULLNAME%
 %PYTHON_FULLNAME% -m venv %VENV_DIR% >stdout.txt 2>stderr.txt
-if not EXIST .\%REPOSITORIES_DIR% mkdir %REPOSITORIES_DIR%
-
-if ["%USE_VENV%"] == ["0"] goto :skip_venv
 
 echo Activating python venv
 set PYTHON="%VENV_DIR%\Scripts\Python.exe"
@@ -33,6 +33,7 @@ echo venv %PYTHON%
 call %VENV_DIR%\Scripts\activate.bat
 
 :skip_venv
+if not EXIST .\%REPOSITORIES_DIR% mkdir %REPOSITORIES_DIR%
 echo Cloning LLaVA repository...
 cd .\repositories
 git clone https://github.com/haotian-liu/LLaVA.git

@@ -1,0 +1,269 @@
+{
+    "data": [
+        {
+            "model": "blip-base",
+            "load_mode": "16bit",
+            "VRAM": 0.7
+        },
+        {
+            "model": "blip-large",
+            "load_mode": "16bit",
+            "VRAM": 1.2
+        },
+        {
+            "model": "blip2-2.7b",
+            "load_mode": "16bit",
+            "VRAM": 7.7
+        },
+        {
+            "model": "blip2-flan-t5-xl",
+            "load_mode": "16bit",
+            "VRAM": 9
+        },
+        {
+            "model": "blip2-flan-t5-xxl",
+            "load_mode": "16bit",
+            "VRAM": 27
+        },
+        {
+            "model": "git-large-coco",
+            "load_mode": "16bit",
+            "VRAM": 1
+        },
+        {
+            "model": "blip2-opt-6.7b",
+            "load_mode": "16bit",
+            "VRAM": 15.1
+        },
+        {
+            "model": "blip2-opt-6.7b-coco",
+            "load_mode": "16bit",
+            "VRAM": 15.1
+        },
+        {
+            "model": "kosmos-2-patch14-224",
+            "load_mode": "16bit",
+            "VRAM": 3.8
+        },
+        {
+            "model": "llava-v1.5-7b",
+            "load_mode": "16bit",
+            "VRAM": 14.1
+        },
+        {
+            "model": "llava-v1.5-13b",
+            "load_mode": "16bit",
+            "VRAM": 26.5
+        },
+        {
+            "model": "llava-v1.6-vicuna-7b",
+            "load_mode": "16bit",
+            "VRAM": 18
+        },
+        {
+            "model": "llava-v1.6-mistral-7b",
+            "load_mode": "16bit",
+            "VRAM": 18
+        },
+        {
+            "model": "llava-v1.6-vicuna-13b",
+            "load_mode": "16bit",
+            "VRAM": 31
+        },
+        {
+            "model": "llava-v1.6-34b",
+            "load_mode": "16bit",
+            "VRAM": 40
+        },
+        {
+            "model": "cogagent-chat-hf",
+            "load_mode": "16bit",
+            "VRAM": 36.3
+        },
+        {
+            "model": "cogagent-vqa-hf",
+            "load_mode": "16bit",
+            "VRAM": 36.3
+        },
+        {
+            "model": "cogvlm-chat-hf",
+            "load_mode": "16bit",
+            "VRAM": 35.7
+        },
+        {
+            "model": "cogvlm-grounding-generalist-hf",
+            "load_mode": "16bit",
+            "VRAM": 35.7
+        },
+        {
+            "model": "blip-base",
+            "load_mode": "4bit",
+            "VRAM": 0.3
+        },
+        {
+            "model": "blip-large",
+            "load_mode": "4bit",
+            "VRAM": 0.5
+        },
+        {
+            "model": "blip2-2.7b",
+            "load_mode": "4bit",
+            "VRAM": 2.2
+        },
+        {
+            "model": "blip2-flan-t5-xl",
+            "load_mode": "4bit",
+            "VRAM": 4.0
+        },
+        {
+            "model": "blip2-flan-t5-xxl",
+            "load_mode": "4bit",
+            "VRAM": 13.1
+        },
+        {
+            "model": "git-large-coco",
+            "load_mode": "4bit",
+            "VRAM": 0.5
+        },
+        {
+            "model": "blip2-opt-6.7b",
+            "load_mode": "4bit",
+            "VRAM": 4.4
+        },
+        {
+            "model": "blip2-opt-6.7b-coco",
+            "load_mode": "4bit",
+            "VRAM": 4.4
+        },
+        {
+            "model": "kosmos-2-patch14-224",
+            "load_mode": "4bit",
+            "VRAM": 1.5
+        },
+        {
+            "model": "llava-v1.5-7b",
+            "load_mode": "4bit",
+            "VRAM": 5.2
+        },
+        {
+            "model": "llava-v1.5-13b",
+            "load_mode": "4bit",
+            "VRAM": 8.7
+        },
+        {
+            "model": "llava-v1.6-vicuna-7b",
+            "load_mode": "4bit",
+            "VRAM": 8.7
+        },
+        {
+            "model": "llava-v1.6-mistral-7b",
+            "load_mode": "4bit",
+            "VRAM": 8
+        },
+        {
+            "model": "llava-v1.6-vicuna-13b",
+            "load_mode": "4bit",
+            "VRAM": 12.7
+        },
+        {
+            "model": "llava-v1.6-34b",
+            "load_mode": "4bit",
+            "VRAM": 21
+        },
+        {
+            "model": "cogagent-chat-hf",
+            "load_mode": "4bit",
+            "VRAM": 10.8
+        },
+        {
+            "model": "cogagent-vqa-hf",
+            "load_mode": "4bit",
+            "VRAM": 10.8
+        },
+        {
+            "model": "cogvlm-chat-hf",
+            "load_mode": "4bit",
+            "VRAM": 10.8
+        },
+        {
+            "model": "cogvlm-grounding-generalist-hf",
+            "load_mode": "4bit",
+            "VRAM": 10.8
+        },
+        {
+            "model": "blip-base",
+            "load_mode": "8bit",
+            "VRAM": 0.6
+        },
+        {
+            "model": "blip-large",
+            "load_mode": "8bit",
+            "VRAM": 0.8
+        },
+        {
+            "model": "blip2-2.7b",
+            "load_mode": "8bit",
+            "VRAM": 4.1
+        },
+        {
+            "model": "blip2-flan-t5-xl",
+            "load_mode": "8bit",
+            "VRAM": 5.6
+        },
+        {
+            "model": "blip2-flan-t5-xxl",
+            "load_mode": "8bit",
+            "VRAM": 18
+        },
+        {
+            "model": "git-large-coco",
+            "load_mode": "8bit",
+            "VRAM": 0.7
+        },
+        {
+            "model": "blip2-opt-6.7b",
+            "load_mode": "8bit",
+            "VRAM": 7.8
+        },
+        {
+            "model": "blip2-opt-6.7b-coco",
+            "load_mode": "8bit",
+            "VRAM": 7.8
+        },
+        {
+            "model": "kosmos-2-patch14-224",
+            "load_mode": "8bit",
+            "VRAM": 2.4
+        },
+        {
+            "model": "llava-v1.5-7b",
+            "load_mode": "8bit",
+            "VRAM": 8.3
+        },
+        {
+            "model": "llava-v1.5-13b",
+            "load_mode": "8bit",
+            "VRAM": 14.8
+        },
+        {
+            "model": "llava-v1.6-vicuna-7b",
+            "load_mode": "8bit",
+            "VRAM": 11.9
+        },
+        {
+            "model": "llava-v1.6-mistral-7b",
+            "load_mode": "8bit",
+            "VRAM": 14.4
+        },
+        {
+            "model": "llava-v1.6-vicuna-13b",
+            "load_mode": "8bit",
+            "VRAM": 20.4
+        },
+        {
+            "model": "llava-v1.6-34b",
+            "load_mode": "8bit",
+            "VRAM": 40
+        }
+    ]
+}

@@ -1,0 +1,2004 @@
+{
+    "data": [
+        {
+            "model": "coca_ViT-B-32/laion2b_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 0.8
+        },
+        {
+            "model": "coca_ViT-B-32/laion2b_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 0.8
+        },
+        {
+            "model": "coca_ViT-B-32/laion2b_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 4.6
+        },
+        {
+            "model": "coca_ViT-B-32/laion2b_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 4.6
+        },
+        {
+            "model": "coca_ViT-B-32/mscoco_finetuned_laion2b_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 0.8
+        },
+        {
+            "model": "coca_ViT-B-32/mscoco_finetuned_laion2b_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 0.8
+        },
+        {
+            "model": "coca_ViT-B-32/mscoco_finetuned_laion2b_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 4.6
+        },
+        {
+            "model": "coca_ViT-B-32/mscoco_finetuned_laion2b_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 4.6
+        },
+        {
+            "model": "coca_ViT-L-14/laion2b_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 2.3
+        },
+        {
+            "model": "coca_ViT-L-14/laion2b_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 2.3
+        },
+        {
+            "model": "coca_ViT-L-14/laion2b_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "coca_ViT-L-14/laion2b_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "coca_ViT-L-14/mscoco_finetuned_laion2b_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 2.3
+        },
+        {
+            "model": "coca_ViT-L-14/mscoco_finetuned_laion2b_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 2.3
+        },
+        {
+            "model": "coca_ViT-L-14/mscoco_finetuned_laion2b_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "coca_ViT-L-14/mscoco_finetuned_laion2b_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "convnext_base/laion400m_s13b_b51k",
+            "feature_mode": "fast",
+            "VRAM": 0.1
+        },
+        {
+            "model": "convnext_base/laion400m_s13b_b51k",
+            "feature_mode": "classic",
+            "VRAM": 0.1
+        },
+        {
+            "model": "convnext_base/laion400m_s13b_b51k",
+            "feature_mode": "best",
+            "VRAM": 3.2
+        },
+        {
+            "model": "convnext_base/laion400m_s13b_b51k",
+            "feature_mode": "negative",
+            "VRAM": 3.2
+        },
+        {
+            "model": "convnext_base_w/laion_aesthetic_s13b_b82k",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "convnext_base_w/laion_aesthetic_s13b_b82k",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "convnext_base_w/laion_aesthetic_s13b_b82k",
+            "feature_mode": "best",
+            "VRAM": 4.1
+        },
+        {
+            "model": "convnext_base_w/laion_aesthetic_s13b_b82k",
+            "feature_mode": "negative",
+            "VRAM": 4.1
+        },
+        {
+            "model": "convnext_base_w/laion2b_s13b_b82k",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "convnext_base_w/laion2b_s13b_b82k",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "convnext_base_w/laion2b_s13b_b82k",
+            "feature_mode": "best",
+            "VRAM": 4.1
+        },
+        {
+            "model": "convnext_base_w/laion2b_s13b_b82k",
+            "feature_mode": "negative",
+            "VRAM": 4.1
+        },
+        {
+            "model": "convnext_base_w/laion2b_s13b_b82k_augreg",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "convnext_base_w/laion2b_s13b_b82k_augreg",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "convnext_base_w/laion2b_s13b_b82k_augreg",
+            "feature_mode": "best",
+            "VRAM": 4.1
+        },
+        {
+            "model": "convnext_base_w/laion2b_s13b_b82k_augreg",
+            "feature_mode": "negative",
+            "VRAM": 4.1
+        },
+        {
+            "model": "convnext_base_w_320/laion_aesthetic_s13b_b82k",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "convnext_base_w_320/laion_aesthetic_s13b_b82k",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "convnext_base_w_320/laion_aesthetic_s13b_b82k",
+            "feature_mode": "best",
+            "VRAM": 4.1
+        },
+        {
+            "model": "convnext_base_w_320/laion_aesthetic_s13b_b82k",
+            "feature_mode": "negative",
+            "VRAM": 4.1
+        },
+        {
+            "model": "convnext_base_w_320/laion_aesthetic_s13b_b82k_augreg",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "convnext_base_w_320/laion_aesthetic_s13b_b82k_augreg",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "convnext_base_w_320/laion_aesthetic_s13b_b82k_augreg",
+            "feature_mode": "best",
+            "VRAM": 4.1
+        },
+        {
+            "model": "convnext_base_w_320/laion_aesthetic_s13b_b82k_augreg",
+            "feature_mode": "negative",
+            "VRAM": 4.1
+        },
+        {
+            "model": "convnext_large_d/laion2b_s26b_b102k_augreg",
+            "feature_mode": "fast",
+            "VRAM": 0.5
+        },
+        {
+            "model": "convnext_large_d/laion2b_s26b_b102k_augreg",
+            "feature_mode": "classic",
+            "VRAM": 0.5
+        },
+        {
+            "model": "convnext_large_d/laion2b_s26b_b102k_augreg",
+            "feature_mode": "best",
+            "VRAM": 5.5
+        },
+        {
+            "model": "convnext_large_d/laion2b_s26b_b102k_augreg",
+            "feature_mode": "negative",
+            "VRAM": 5.5
+        },
+        {
+            "model": "convnext_large_d_320/laion2b_s29b_b131k_ft",
+            "feature_mode": "fast",
+            "VRAM": 0.5
+        },
+        {
+            "model": "convnext_large_d_320/laion2b_s29b_b131k_ft",
+            "feature_mode": "classic",
+            "VRAM": 0.5
+        },
+        {
+            "model": "convnext_large_d_320/laion2b_s29b_b131k_ft",
+            "feature_mode": "best",
+            "VRAM": 5.5
+        },
+        {
+            "model": "convnext_large_d_320/laion2b_s29b_b131k_ft",
+            "feature_mode": "negative",
+            "VRAM": 5.5
+        },
+        {
+            "model": "convnext_large_d_320/laion2b_s29b_b131k_ft_soup",
+            "feature_mode": "fast",
+            "VRAM": 0.5
+        },
+        {
+            "model": "convnext_large_d_320/laion2b_s29b_b131k_ft_soup",
+            "feature_mode": "classic",
+            "VRAM": 0.5
+        },
+        {
+            "model": "convnext_large_d_320/laion2b_s29b_b131k_ft_soup",
+            "feature_mode": "best",
+            "VRAM": 5.5
+        },
+        {
+            "model": "convnext_large_d_320/laion2b_s29b_b131k_ft_soup",
+            "feature_mode": "negative",
+            "VRAM": 5.5
+        },
+        {
+            "model": "nllb-clip-base/v1",
+            "feature_mode": "fast",
+            "VRAM": 1.7
+        },
+        {
+            "model": "nllb-clip-base/v1",
+            "feature_mode": "classic",
+            "VRAM": 1.7
+        },
+        {
+            "model": "nllb-clip-base/v1",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "nllb-clip-base/v1",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "nllb-clip-large/v1",
+            "feature_mode": "fast",
+            "VRAM": 5.4
+        },
+        {
+            "model": "nllb-clip-large/v1",
+            "feature_mode": "classic",
+            "VRAM": 5.4
+        },
+        {
+            "model": "nllb-clip-large/v1",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "nllb-clip-large/v1",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "RN101/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "RN101/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "RN101/openai",
+            "feature_mode": "best",
+            "VRAM": 4.1
+        },
+        {
+            "model": "RN101/openai",
+            "feature_mode": "negative",
+            "VRAM": 4.1
+        },
+        {
+            "model": "RN101/yfcc15m",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "RN101/yfcc15m",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "RN101/yfcc15m",
+            "feature_mode": "best",
+            "VRAM": 3.6
+        },
+        {
+            "model": "RN101/yfcc15m",
+            "feature_mode": "negative",
+            "VRAM": 3.6
+        },
+        {
+            "model": "RN101-quickgelu/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "RN101-quickgelu/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "RN101-quickgelu/openai",
+            "feature_mode": "best",
+            "VRAM": 4.1
+        },
+        {
+            "model": "RN101-quickgelu/openai",
+            "feature_mode": "negative",
+            "VRAM": 4.1
+        },
+        {
+            "model": "RN101-quickgelu/yfcc15m",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "RN101-quickgelu/yfcc15m",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "RN101-quickgelu/yfcc15m",
+            "feature_mode": "best",
+            "VRAM": 4.2
+        },
+        {
+            "model": "RN101-quickgelu/yfcc15m",
+            "feature_mode": "negative",
+            "VRAM": 4.2
+        },
+        {
+            "model": "RN50/cc12m",
+            "feature_mode": "fast",
+            "VRAM": 0.3
+        },
+        {
+            "model": "RN50/cc12m",
+            "feature_mode": "classic",
+            "VRAM": 0.3
+        },
+        {
+            "model": "RN50/cc12m",
+            "feature_mode": "best",
+            "VRAM": 3.6
+        },
+        {
+            "model": "RN50/cc12m",
+            "feature_mode": "negative",
+            "VRAM": 3.6
+        },
+        {
+            "model": "RN50/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "RN50/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "RN50/openai",
+            "feature_mode": "best",
+            "VRAM": 4.0
+        },
+        {
+            "model": "RN50/openai",
+            "feature_mode": "negative",
+            "VRAM": 4.0
+        },
+        {
+            "model": "RN50/yfcc15m",
+            "feature_mode": "fast",
+            "VRAM": 0.3
+        },
+        {
+            "model": "RN50/yfcc15m",
+            "feature_mode": "classic",
+            "VRAM": 0.3
+        },
+        {
+            "model": "RN50/yfcc15m",
+            "feature_mode": "best",
+            "VRAM": 3.6
+        },
+        {
+            "model": "RN50/yfcc15m",
+            "feature_mode": "negative",
+            "VRAM": 3.6
+        },
+        {
+            "model": "RN50-quickgelu/cc12m",
+            "feature_mode": "fast",
+            "VRAM": 0.3
+        },
+        {
+            "model": "RN50-quickgelu/cc12m",
+            "feature_mode": "classic",
+            "VRAM": 0.3
+        },
+        {
+            "model": "RN50-quickgelu/cc12m",
+            "feature_mode": "best",
+            "VRAM": 4.2
+        },
+        {
+            "model": "RN50-quickgelu/cc12m",
+            "feature_mode": "negative",
+            "VRAM": 4.2
+        },
+        {
+            "model": "RN50-quickgelu/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "RN50-quickgelu/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "RN50-quickgelu/openai",
+            "feature_mode": "best",
+            "VRAM": 4.0
+        },
+        {
+            "model": "RN50-quickgelu/openai",
+            "feature_mode": "negative",
+            "VRAM": 4.0
+        },
+        {
+            "model": "RN50-quickgelu/yfcc15m",
+            "feature_mode": "fast",
+            "VRAM": 0.3
+        },
+        {
+            "model": "RN50-quickgelu/yfcc15m",
+            "feature_mode": "classic",
+            "VRAM": 0.3
+        },
+        {
+            "model": "RN50-quickgelu/yfcc15m",
+            "feature_mode": "best",
+            "VRAM": 4.2
+        },
+        {
+            "model": "RN50-quickgelu/yfcc15m",
+            "feature_mode": "negative",
+            "VRAM": 4.2
+        },
+        {
+            "model": "RN50x16/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.6
+        },
+        {
+            "model": "RN50x16/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.6
+        },
+        {
+            "model": "RN50x16/openai",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "RN50x16/openai",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "RN50x4/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "RN50x4/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "RN50x4/openai",
+            "feature_mode": "best",
+            "VRAM": 5.4
+        },
+        {
+            "model": "RN50x4/openai",
+            "feature_mode": "negative",
+            "VRAM": 5.4
+        },
+        {
+            "model": "RN50x64/openai",
+            "feature_mode": "fast",
+            "VRAM": 1.3
+        },
+        {
+            "model": "RN50x64/openai",
+            "feature_mode": "classic",
+            "VRAM": 1.3
+        },
+        {
+            "model": "RN50x64/openai",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "RN50x64/openai",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "roberta-ViT-B-32/laion2b_s12b_b32k",
+            "feature_mode": "fast",
+            "VRAM": 0.7
+        },
+        {
+            "model": "roberta-ViT-B-32/laion2b_s12b_b32k",
+            "feature_mode": "classic",
+            "VRAM": 0.7
+        },
+        {
+            "model": "roberta-ViT-B-32/laion2b_s12b_b32k",
+            "feature_mode": "best",
+            "VRAM": 5.7
+        },
+        {
+            "model": "roberta-ViT-B-32/laion2b_s12b_b32k",
+            "feature_mode": "negative",
+            "VRAM": 5.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_basic_s1b_b8k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_basic_s1b_b8k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_basic_s1b_b8k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_basic_s1b_b8k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_clip_s1b_b8k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_clip_s1b_b8k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_clip_s1b_b8k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_clip_s1b_b8k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_image_s1b_b8k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_image_s1b_b8k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_image_s1b_b8k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_image_s1b_b8k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_laion_s1b_b8k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_laion_s1b_b8k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_laion_s1b_b8k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_laion_s1b_b8k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_s1b_b8k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_s1b_b8k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_s1b_b8k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_s1b_b8k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_text_s1b_b8k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_text_s1b_b8k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_text_s1b_b8k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/commonpool_l_text_s1b_b8k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/datacomp_l_s1b_b8k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/datacomp_l_s1b_b8k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/datacomp_l_s1b_b8k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/datacomp_l_s1b_b8k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/datacomp_xl_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/datacomp_xl_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/datacomp_xl_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/datacomp_xl_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/dfn2b",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/dfn2b",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/dfn2b",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/dfn2b",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/laion2b_s34b_b88k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/laion2b_s34b_b88k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/laion2b_s34b_b88k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/laion2b_s34b_b88k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/laion400m_e31",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/laion400m_e31",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/laion400m_e31",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/laion400m_e31",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/laion400m_e32",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/laion400m_e32",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16/laion400m_e32",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/laion400m_e32",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-16/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "ViT-B-16/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "ViT-B-16/openai",
+            "feature_mode": "best",
+            "VRAM": 4.0
+        },
+        {
+            "model": "ViT-B-16/openai",
+            "feature_mode": "negative",
+            "VRAM": 4.0
+        },
+        {
+            "model": "ViT-B-16-plus-240/laion400m_e31",
+            "feature_mode": "fast",
+            "VRAM": 0.7
+        },
+        {
+            "model": "ViT-B-16-plus-240/laion400m_e31",
+            "feature_mode": "classic",
+            "VRAM": 0.7
+        },
+        {
+            "model": "ViT-B-16-plus-240/laion400m_e31",
+            "feature_mode": "best",
+            "VRAM": 4.8
+        },
+        {
+            "model": "ViT-B-16-plus-240/laion400m_e31",
+            "feature_mode": "negative",
+            "VRAM": 4.8
+        },
+        {
+            "model": "ViT-B-16-plus-240/laion400m_e32",
+            "feature_mode": "fast",
+            "VRAM": 0.7
+        },
+        {
+            "model": "ViT-B-16-plus-240/laion400m_e32",
+            "feature_mode": "classic",
+            "VRAM": 0.7
+        },
+        {
+            "model": "ViT-B-16-plus-240/laion400m_e32",
+            "feature_mode": "best",
+            "VRAM": 4.8
+        },
+        {
+            "model": "ViT-B-16-plus-240/laion400m_e32",
+            "feature_mode": "negative",
+            "VRAM": 4.8
+        },
+        {
+            "model": "ViT-B-16-quickgelu/metaclip_400m",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16-quickgelu/metaclip_400m",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16-quickgelu/metaclip_400m",
+            "feature_mode": "best",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-16-quickgelu/metaclip_400m",
+            "feature_mode": "negative",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-16-quickgelu/metaclip_fullcc",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16-quickgelu/metaclip_fullcc",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-16-quickgelu/metaclip_fullcc",
+            "feature_mode": "best",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-16-quickgelu/metaclip_fullcc",
+            "feature_mode": "negative",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_basic_s128m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_basic_s128m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_basic_s128m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_basic_s128m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_clip_s128m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_clip_s128m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_clip_s128m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_clip_s128m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_image_s128m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_image_s128m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_image_s128m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_image_s128m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_laion_s128m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_laion_s128m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_laion_s128m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_laion_s128m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_s128m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_s128m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_s128m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_s128m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_text_s128m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_text_s128m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_text_s128m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_m_text_s128m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_basic_s13m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_basic_s13m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_basic_s13m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_basic_s13m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_clip_s13m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_clip_s13m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_clip_s13m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_clip_s13m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_image_s13m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_image_s13m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_image_s13m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_image_s13m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_laion_s13m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_laion_s13m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_laion_s13m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_laion_s13m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_s13m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_s13m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_s13m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_s13m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_text_s13m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_text_s13m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_text_s13m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/commonpool_s_text_s13m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/datacomp_m_s128m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/datacomp_m_s128m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/datacomp_m_s128m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/datacomp_m_s128m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/datacomp_s_s13m_b4k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/datacomp_s_s13m_b4k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/datacomp_s_s13m_b4k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/datacomp_s_s13m_b4k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/datacomp_xl_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/datacomp_xl_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/datacomp_xl_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/datacomp_xl_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/laion2b_e16",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/laion2b_e16",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/laion2b_e16",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/laion2b_e16",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/laion2b_s34b_b79k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/laion2b_s34b_b79k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/laion2b_s34b_b79k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/laion2b_s34b_b79k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/laion400m_e31",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/laion400m_e31",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/laion400m_e31",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/laion400m_e31",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/laion400m_e32",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/laion400m_e32",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32/laion400m_e32",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/laion400m_e32",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "ViT-B-32/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "ViT-B-32/openai",
+            "feature_mode": "best",
+            "VRAM": 4.0
+        },
+        {
+            "model": "ViT-B-32/openai",
+            "feature_mode": "negative",
+            "VRAM": 4.0
+        },
+        {
+            "model": "ViT-B-32-256/datacomp_s34b_b86k",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32-256/datacomp_s34b_b86k",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32-256/datacomp_s34b_b86k",
+            "feature_mode": "best",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32-256/datacomp_s34b_b86k",
+            "feature_mode": "negative",
+            "VRAM": 3.7
+        },
+        {
+            "model": "ViT-B-32-quickgelu/laion400m_e31",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32-quickgelu/laion400m_e31",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32-quickgelu/laion400m_e31",
+            "feature_mode": "best",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-32-quickgelu/laion400m_e31",
+            "feature_mode": "negative",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-32-quickgelu/laion400m_e32",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32-quickgelu/laion400m_e32",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32-quickgelu/laion400m_e32",
+            "feature_mode": "best",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-32-quickgelu/laion400m_e32",
+            "feature_mode": "negative",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-32-quickgelu/metaclip_400m",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32-quickgelu/metaclip_400m",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32-quickgelu/metaclip_400m",
+            "feature_mode": "best",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-32-quickgelu/metaclip_400m",
+            "feature_mode": "negative",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-32-quickgelu/metaclip_fullcc",
+            "feature_mode": "fast",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32-quickgelu/metaclip_fullcc",
+            "feature_mode": "classic",
+            "VRAM": 0.4
+        },
+        {
+            "model": "ViT-B-32-quickgelu/metaclip_fullcc",
+            "feature_mode": "best",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-32-quickgelu/metaclip_fullcc",
+            "feature_mode": "negative",
+            "VRAM": 4.3
+        },
+        {
+            "model": "ViT-B-32-quickgelu/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.2
+        },
+        {
+            "model": "ViT-B-32-quickgelu/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.2
+        },
+        {
+            "model": "ViT-B-32-quickgelu/openai",
+            "feature_mode": "best",
+            "VRAM": 4.0
+        },
+        {
+            "model": "ViT-B-32-quickgelu/openai",
+            "feature_mode": "negative",
+            "VRAM": 4.0
+        },
+        {
+            "model": "ViT-bigG-14/laion2b_s39b_b160k",
+            "feature_mode": "fast",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14/laion2b_s39b_b160k",
+            "feature_mode": "classic",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14/laion2b_s39b_b160k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14/laion2b_s39b_b160k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14-CLIPA/datacomp1b",
+            "feature_mode": "fast",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14-CLIPA/datacomp1b",
+            "feature_mode": "classic",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14-CLIPA/datacomp1b",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14-CLIPA/datacomp1b",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14-CLIPA-336/datacomp1b",
+            "feature_mode": "fast",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14-CLIPA-336/datacomp1b",
+            "feature_mode": "classic",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14-CLIPA-336/datacomp1b",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-bigG-14-CLIPA-336/datacomp1b",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-g-14/laion2b_s12b_b42k",
+            "feature_mode": "fast",
+            "VRAM": 5.2
+        },
+        {
+            "model": "ViT-g-14/laion2b_s12b_b42k",
+            "feature_mode": "classic",
+            "VRAM": 5.2
+        },
+        {
+            "model": "ViT-g-14/laion2b_s12b_b42k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-g-14/laion2b_s12b_b42k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-g-14/laion2b_s34b_b88k",
+            "feature_mode": "fast",
+            "VRAM": 5.2
+        },
+        {
+            "model": "ViT-g-14/laion2b_s34b_b88k",
+            "feature_mode": "classic",
+            "VRAM": 5.2
+        },
+        {
+            "model": "ViT-g-14/laion2b_s34b_b88k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-g-14/laion2b_s34b_b88k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-H-14/laion2b_s32b_b79k",
+            "feature_mode": "fast",
+            "VRAM": 3.6
+        },
+        {
+            "model": "ViT-H-14/laion2b_s32b_b79k",
+            "feature_mode": "classic",
+            "VRAM": 3.6
+        },
+        {
+            "model": "ViT-H-14/laion2b_s32b_b79k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-H-14/laion2b_s32b_b79k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-H-14-378-quickgelu/dfn5b",
+            "feature_mode": "fast",
+            "VRAM": 3.6
+        },
+        {
+            "model": "ViT-H-14-378-quickgelu/dfn5b",
+            "feature_mode": "classic",
+            "VRAM": 3.6
+        },
+        {
+            "model": "ViT-H-14-378-quickgelu/dfn5b",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-H-14-378-quickgelu/dfn5b",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-H-14-CLIPA/datacomp1b",
+            "feature_mode": "fast",
+            "VRAM": 3.5
+        },
+        {
+            "model": "ViT-H-14-CLIPA/datacomp1b",
+            "feature_mode": "classic",
+            "VRAM": 3.5
+        },
+        {
+            "model": "ViT-H-14-CLIPA/datacomp1b",
+            "feature_mode": "best",
+            "VRAM": 6.3
+        },
+        {
+            "model": "ViT-H-14-CLIPA/datacomp1b",
+            "feature_mode": "negative",
+            "VRAM": 6.3
+        },
+        {
+            "model": "ViT-H-14-CLIPA-336/datacomp1b",
+            "feature_mode": "fast",
+            "VRAM": 3.5
+        },
+        {
+            "model": "ViT-H-14-CLIPA-336/datacomp1b",
+            "feature_mode": "classic",
+            "VRAM": 3.5
+        },
+        {
+            "model": "ViT-H-14-CLIPA-336/datacomp1b",
+            "feature_mode": "best",
+            "VRAM": 6.3
+        },
+        {
+            "model": "ViT-H-14-CLIPA-336/datacomp1b",
+            "feature_mode": "negative",
+            "VRAM": 6.3
+        },
+        {
+            "model": "ViT-H-14-CLIPA-336/laion2b",
+            "feature_mode": "fast",
+            "VRAM": 3.5
+        },
+        {
+            "model": "ViT-H-14-CLIPA-336/laion2b",
+            "feature_mode": "classic",
+            "VRAM": 3.5
+        },
+        {
+            "model": "ViT-H-14-CLIPA-336/laion2b",
+            "feature_mode": "best",
+            "VRAM": 6.3
+        },
+        {
+            "model": "ViT-H-14-CLIPA-336/laion2b",
+            "feature_mode": "negative",
+            "VRAM": 6.3
+        },
+        {
+            "model": "ViT-H-14-quickgelu/dfn5b",
+            "feature_mode": "fast",
+            "VRAM": 3.6
+        },
+        {
+            "model": "ViT-H-14-quickgelu/dfn5b",
+            "feature_mode": "classic",
+            "VRAM": 3.6
+        },
+        {
+            "model": "ViT-H-14-quickgelu/dfn5b",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-H-14-quickgelu/dfn5b",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-H-14-quickgelu/metaclip_fullcc",
+            "feature_mode": "fast",
+            "VRAM": 3.6
+        },
+        {
+            "model": "ViT-H-14-quickgelu/metaclip_fullcc",
+            "feature_mode": "classic",
+            "VRAM": 3.6
+        },
+        {
+            "model": "ViT-H-14-quickgelu/metaclip_fullcc",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-H-14-quickgelu/metaclip_fullcc",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_clip_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_clip_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_clip_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_clip_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_laion_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_laion_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_laion_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_laion_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/commonpool_xl_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/datacomp_xl_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/datacomp_xl_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/datacomp_xl_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/datacomp_xl_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/laion2b_s32b_b82k",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/laion2b_s32b_b82k",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/laion2b_s32b_b82k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/laion2b_s32b_b82k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/laion400m_e31",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/laion400m_e31",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/laion400m_e31",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/laion400m_e31",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/laion400m_e32",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/laion400m_e32",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14/laion400m_e32",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/laion400m_e32",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.7
+        },
+        {
+            "model": "ViT-L-14/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.7
+        },
+        {
+            "model": "ViT-L-14/openai",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14/openai",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14-336/openai",
+            "feature_mode": "fast",
+            "VRAM": 0.7
+        },
+        {
+            "model": "ViT-L-14-336/openai",
+            "feature_mode": "classic",
+            "VRAM": 0.7
+        },
+        {
+            "model": "ViT-L-14-336/openai",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14-336/openai",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14-CLIPA/datacomp1b",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14-CLIPA/datacomp1b",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14-CLIPA/datacomp1b",
+            "feature_mode": "best",
+            "VRAM": 3.4
+        },
+        {
+            "model": "ViT-L-14-CLIPA/datacomp1b",
+            "feature_mode": "negative",
+            "VRAM": 3.4
+        },
+        {
+            "model": "ViT-L-14-CLIPA-336/datacomp1b",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14-CLIPA-336/datacomp1b",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14-CLIPA-336/datacomp1b",
+            "feature_mode": "best",
+            "VRAM": 3.4
+        },
+        {
+            "model": "ViT-L-14-CLIPA-336/datacomp1b",
+            "feature_mode": "negative",
+            "VRAM": 3.4
+        },
+        {
+            "model": "ViT-L-14-quickgelu/dfn2b",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14-quickgelu/dfn2b",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14-quickgelu/dfn2b",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14-quickgelu/dfn2b",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14-quickgelu/metaclip_400m",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14-quickgelu/metaclip_400m",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14-quickgelu/metaclip_400m",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14-quickgelu/metaclip_400m",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14-quickgelu/metaclip_fullcc",
+            "feature_mode": "fast",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14-quickgelu/metaclip_fullcc",
+            "feature_mode": "classic",
+            "VRAM": 1.4
+        },
+        {
+            "model": "ViT-L-14-quickgelu/metaclip_fullcc",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "ViT-L-14-quickgelu/metaclip_fullcc",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        },
+        {
+            "model": "xlm-roberta-base-ViT-B-32/laion5b_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 1.2
+        },
+        {
+            "model": "xlm-roberta-base-ViT-B-32/laion5b_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 1.2
+        },
+        {
+            "model": "xlm-roberta-base-ViT-B-32/laion5b_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 6.3
+        },
+        {
+            "model": "xlm-roberta-base-ViT-B-32/laion5b_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 6.3
+        },
+        {
+            "model": "xlm-roberta-large-ViT-H-14/frozen_laion5b_s13b_b90k",
+            "feature_mode": "fast",
+            "VRAM": 4.4
+        },
+        {
+            "model": "xlm-roberta-large-ViT-H-14/frozen_laion5b_s13b_b90k",
+            "feature_mode": "classic",
+            "VRAM": 4.4
+        },
+        {
+            "model": "xlm-roberta-large-ViT-H-14/frozen_laion5b_s13b_b90k",
+            "feature_mode": "best",
+            "VRAM": 6.5
+        },
+        {
+            "model": "xlm-roberta-large-ViT-H-14/frozen_laion5b_s13b_b90k",
+            "feature_mode": "negative",
+            "VRAM": 6.5
+        }
+    ]
+}

@@ -10,7 +10,11 @@ The **IMAGE Interrogator** is a variant of the original [CLIP Interrogator](http
 
 ## Installation
 
-Use Python version 3.10.* and have the Python virtual environment installed. 
+Use Python version 3.10.* and have the Python virtual environment installed. For linux users will need to install Tkinter with the follow command: 
+```bash
+sudo apt-get install python3-tk
+```
+
 Then run the following commands in the terminal:
 ```bash
 git clone https://github.com/DEVAIEXP/image-interrogator.git

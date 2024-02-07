@@ -79,7 +79,7 @@ For selection of OpenCLIP pretrained CLIP Model. Only one feature mode can selec
 * `Test all caption models`: A csv file will be generated in the output path, delimited by ';' which will contain the caption/prompt generated in each available caption model for comparison purposes. This does not include results from CLIP Models.
 * `Test all CLIP models`: If you chose a winning model in the previous test, you can now test all available CLIP templates for the selected caption template. The result will also be stored in the output path in a csv file delimited by ';'.
 
-## Prompt tab
+## Analyze tab
 It returns a list of words in each feature and their scores for the given image, model.
 
 ## Others

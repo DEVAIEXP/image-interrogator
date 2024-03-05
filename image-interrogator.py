@@ -492,9 +492,9 @@ def batch_process(folder,
         pass
     
 def get_question_prompt(caption_model_value):
-    if caption_model_value.startswith("llava") or caption_model_value.startswith('cogvlm') or caption_model_value.startswith('cogagent'):
+    if caption_model_value.startswith("llava") or caption_model_value.startswith('cogvlm') or caption_model_value.startswith('cogagent') or caption_model_value.startswith("moondream") :
         question_prompt_text = "Provide caption for the image in one sentence. Be detailed but precise."
-    elif caption_model_value.startswith("kosmos-2"):
+    elif caption_model_value.startswith("kosmos-2") :
         question_prompt_text = "Describe this image in detail:"            
     else:
         question_prompt_text = None
@@ -578,6 +578,7 @@ def prompt_tab():
             show_elements = True if caption_model_value.startswith("llava") else False
             show_prompt = True if (caption_model_value.startswith("llava") 
                                    or caption_model_value.startswith("kosmos-2") 
+                                   or caption_model_value.startswith("moondream") 
                                    or caption_model_value.startswith('cogvlm') 
                                    or caption_model_value.startswith('cogagent')) else False
             
@@ -586,6 +587,8 @@ def prompt_tab():
             outputs=[]
             if caption_model_value.startswith('cogvlm') or caption_model_value.startswith('cogagent'):
                 outputs.append(gr.update(visible=True, choices=['16bit', '4bit'], value='4bit'))    
+            elif caption_model_value.startswith('moondream') :
+                outputs.append(gr.update(visible=True, choices=['16bit'], value='16bit'))    
             else:                
                 outputs.append(gr.update(visible=True, choices=['16bit', '8bit', '4bit'], value=load_mode_value)) 
                 

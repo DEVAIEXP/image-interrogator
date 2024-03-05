@@ -264,6 +264,21 @@
             "model": "llava-v1.6-34b",
             "load_mode": "8bit",
             "VRAM": 40
+        },
+        {
+            "model": "moondream1",
+            "load_mode": "16bit",
+            "VRAM": 4.6
+        },
+        {
+            "model": "moondream1",
+            "load_mode": "8bit",
+            "VRAM": 3.2
+        },
+        {
+            "model": "moondream1",
+            "load_mode": "4bit",
+            "VRAM": 2.3
         }
     ]
 }

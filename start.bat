@@ -12,4 +12,4 @@ set PYTHON="%VENV_DIR%\Scripts\Python.exe"
 call %VENV_DIR%\Scripts\activate.bat
 
 :skip_venv
-python image-interrogator.py --cache-dir=c:\models\caption
+python image-interrogator.py --cache-dir=f:\models\caption

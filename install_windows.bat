@@ -43,13 +43,16 @@ echo Patching LLaVA...
 copy /y ..\..\patches\LLaVa\pyproject.toml .
 copy /y ..\..\patches\LLaVa\builder.py .\llava\model
 echo Installing LLaVA. This could take a few minutes...
-pip3 install torch==2.0.1 torchvision==0.15.2 torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip3 install torch==2.2.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 --upgrade
 pip install -e .
 cd ..\..
 echo Installing other requirements. This could take a few minutes...
+python.exe -m pip install --upgrade pip
 pip install -r requirements.txt
 pip uninstall bitsandbytes --yes
-pip install https://github.com/jllllll/bitsandbytes-windows-webui/releases/download/wheels/bitsandbytes-0.41.0-py3-none-win_amd64.whl
+pip install https://huggingface.co/elismasilva/wheels/resolve/main/bitsandbytes-0.41.2.post2-py3-none-win_amd64.whl
+pip install https://huggingface.co/elismasilva/wheels/resolve/main/triton-2.1.0-cp310-cp310-win_amd64.whl
+pip install xformers==0.0.24 --index-url https://download.pytorch.org/whl/cu118 --upgrade
 echo Patching PIL...
 copy /y .\patches\PIL\Image.py .\venv\Lib\site-packages\PIL
 echo Patching Gradio...

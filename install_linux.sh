@@ -87,12 +87,13 @@ cp -f ../../patches/LLaVa/builder.py ./llava/model
 printf "\n%s\n" "${delimiter}"
 printf "Installing LLaVA. This could take a few minutes..."
 printf "\n%s\n" "${delimiter}"
-pip3 install torch==2.0.1 torchvision==0.15.2 torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip3 install torch==2.2.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 
 pip install -e .
 cd ../..
 printf "\n%s\n" "${delimiter}"
 printf "Installing other requirements. This could take a few minutes..."
 pip install -r requirements.txt
+pip3 install xformers==0.0.24 --index-url https://download.pytorch.org/whl/cu118
 printf "Patching PIL..."
 cp -f ./patches/PIL/Image.py ./venv/lib64/"$(ls ./venv/lib64)"/site-packages/PIL
 printf "\n%s\n" "${delimiter}"

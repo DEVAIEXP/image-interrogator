@@ -166,5 +166,6 @@ tests
 repositories
 repositories_
 venv
+venv2
 stdout.txt
 stderr.txt

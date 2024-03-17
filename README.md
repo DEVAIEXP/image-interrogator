@@ -92,11 +92,11 @@ It returns a list of words in each feature and their scores for the given image,
 ## Others
 If you update the version of LLaVa, Gradio and PIL dependencies, this tool will not work correctly. When there is a need to update these dependencies, we will update them in our repository. Whenever there is a new update to this repository, it will be necessary to delete the 'repositories' directory and run the installation script again.
 
-### License
+## License
 This project is released under the [MIT license](LICENSE).
 
-### Acknowledgement
+## Acknowledgement
 This project is based on [CLIP Interrogator](https://github.com/pharmapsychotic/clip-interrogator), Some codes are brought from [LLaVa](https://llava-vl.github.io/). Thanks for their awesome works. 
 
-### Contact
+## Contact
 If you have any questions, please contact: contact@devaiexp.com

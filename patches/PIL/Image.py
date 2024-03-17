@@ -482,6 +482,7 @@ class Image:
     format: str | None = None
     format_description: str | None = None
     orig_file_name: str | None = None 
+    temp_file_path: str | None = None
     _close_exclusive_fp_after_loading = True
     
     def __init__(self):
@@ -934,6 +935,7 @@ class Image:
         if not mode or (mode == self.mode and not matrix):
             im = self.copy()
             im.orig_file_name = self.orig_file_name
+            im.temp_file_path = self.temp_file_path
             return im
 
         if matrix:
@@ -977,6 +979,7 @@ class Image:
                 )
                 del new_im.info["transparency"]
                 new_im.orig_file_name = self.orig_file_name
+                new_im.temp_file_path = self.temp_file_path
                 return new_im
             elif self.mode in ("L", "RGB", "P") and mode in ("L", "RGB", "P"):
                 t = self.info["transparency"]
@@ -1050,6 +1053,7 @@ class Image:
                     del new_im.info["transparency"]
                     warnings.warn("Couldn't allocate palette entry for transparency")
             new_im.orig_file_name = self.orig_file_name
+            new_im.temp_file_path = self.temp_file_path
             return new_im
 
         if "LAB" in (self.mode, mode):
@@ -1085,6 +1089,8 @@ class Image:
 
         new_im = self._new(im)
         new_im.orig_file_name = self.orig_file_name
+        new_im.temp_file_path = self.temp_file_path
+        
         if mode == "P" and palette != Palette.ADAPTIVE:
             from . import ImagePalette
 

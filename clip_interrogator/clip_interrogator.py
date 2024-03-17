@@ -9,7 +9,9 @@ import torch
 
 from dataclasses import dataclass
 from PIL import Image
-from transformers import AutoProcessor, LlamaTokenizer, Blip2Processor, Kosmos2Processor, AutoModelForVision2Seq, AutoModelForCausalLM, BlipForConditionalGeneration, Blip2ForConditionalGeneration, BitsAndBytesConfig
+from transformers import AutoProcessor, AutoTokenizer, LlamaTokenizer, Blip2Processor, Kosmos2Processor, AutoModelForVision2Seq, \
+AutoModelForCausalLM, BlipForConditionalGeneration, Blip2ForConditionalGeneration, BitsAndBytesConfig, CodeGenTokenizerFast
+from transformers.generation import GenerationConfig
 from tqdm import tqdm
 from typing import List, Optional
 
@@ -37,7 +39,11 @@ CAPTION_MODELS = {
     'cogagent-chat-hf': 'THUDM/cogagent-chat-hf',                #
     'cogagent-vqa-hf' : 'THUDM/cogagent-vqa-hf',                 #
     'cogvlm-chat-hf': 'THUDM/cogvlm-chat-hf',                    #  
-    'cogvlm-grounding-generalist-hf': 'THUDM/cogvlm-grounding-generalist-hf' #   
+    'cogvlm-grounding-generalist-hf': 'THUDM/cogvlm-grounding-generalist-hf', #   
+    'moondream1' : 'vikhyatk/moondream1',
+    'moondream2' : 'vikhyatk/moondream2',
+    'qwen-VL-Chat': 'Qwen/Qwen-VL-Chat',
+    'qwen-VL-Chat (4Bit)': 'Qwen/Qwen-VL-Chat-Int4'
 }
 
 CACHE_URL_BASE = 'https://huggingface.co/pharmapsychotic/ci-preprocess/resolve/main/'
@@ -90,6 +96,9 @@ class Interrogator():
         self.dtype = config.dtype 
         self.caption_offloaded = True
         self.clip_offloaded = True
+        self.load_models()
+
+    def load_models(self):
         if self.config.caption_model_name:
             self.load_caption_model()
         if self.config.generate_features:
@@ -121,9 +130,11 @@ class Interrogator():
                 
             self.tokenizer, self.caption_model, self.caption_processor, self.context_len = load_pretrained_model(
                 model_path=self.config.model_path, model_base=None, model_name=self.config.caption_model_name, load_8bit=self.config.load_8bit, load_4bit=self.config.load_4bit, device=self.device, use_flash_attn=False, local_files_only=self.config.download_models_to_cache
-            )            
+            )
+            self.config.caption_model = self.caption_model                              
         else:
             self.caption_model = self.config.caption_model
+            self.config.caption_model = self.caption_model      
             self.caption_processor = self.config.caption_processor
             self.tokenizer = self.config.tokenizer
             self.context_len = self.config.context_len
@@ -160,14 +171,27 @@ class Interrogator():
             elif self.config.caption_model_name.startswith('cogvlm') or self.config.caption_model_name.startswith('cogagent'):
                 self.tokenizer = LlamaTokenizer.from_pretrained("lmsys/vicuna-7b-v1.5", use_fast=False, trust_remote_code=True)
                 caption_model = AutoModelForCausalLM.from_pretrained(self.config.model_path, low_cpu_mem_usage=True, local_files_only=self.config.download_models_to_cache, torch_dtype=self.dtype, trust_remote_code=True, **kwargs)
+            elif self.config.caption_model_name.startswith('moondream'):
+                self.tokenizer = CodeGenTokenizerFast.from_pretrained(self.config.model_path, use_fast=False, trust_remote_code=True)
+                caption_model = AutoModelForCausalLM.from_pretrained(self.config.model_path, trust_remote_code=True, local_files_only=self.config.download_models_to_cache, torch_dtype=self.dtype, **kwargs)
+            elif self.config.caption_model_name.startswith('qwen-VL-Chat'):                
+                self.tokenizer = AutoTokenizer.from_pretrained(self.config.model_path, trust_remote_code=True)
+                if '(4Bit)' in self.config.caption_model_name:
+                    caption_model = AutoModelForCausalLM.from_pretrained(self.config.model_path, trust_remote_code=True, local_files_only=self.config.download_models_to_cache, device_map = kwargs['device_map'])                
+                elif self.dtype == torch.bfloat16:
+                    caption_model = AutoModelForCausalLM.from_pretrained(self.config.model_path, trust_remote_code=True, local_files_only=self.config.download_models_to_cache, torch_dtype=self.dtype, bf16=True, **kwargs)
+                else:
+                    caption_model = AutoModelForCausalLM.from_pretrained(self.config.model_path, trust_remote_code=True, local_files_only=self.config.download_models_to_cache, torch_dtype=self.dtype, fp16=True, **kwargs)
             else:
                 caption_model = BlipForConditionalGeneration.from_pretrained(self.config.model_path, low_cpu_mem_usage=True, local_files_only=self.config.download_models_to_cache, torch_dtype=self.dtype, **kwargs)
                 self.caption_processor = AutoProcessor.from_pretrained(self.config.model_path)
             caption_model.eval()
          
-            self.caption_model = caption_model          
+            self.caption_model = caption_model    
+            self.config.caption_model = caption_model      
         else:
             self.caption_model = self.config.caption_model
+            self.config.caption_model = caption_model      
             if self.config.caption_processor:
                 self.caption_processor = self.config.caption_processor
             if self.config.tokenizer:
@@ -302,6 +326,19 @@ class Interrogator():
             captions, entities = self.caption_processor.post_process_generation(generated_text)
             captions = captions.replace(question_prompt,'').strip()
             #captions = captions + "\n\n" + str(entities)
+        elif self.config.caption_model_name.startswith('moondream'):
+            enc_image = self.caption_model.encode_image(pil_image)
+            captions = self.caption_model.answer_question(enc_image, question_prompt, self.tokenizer)
+            return captions
+        elif self.config.caption_model_name.startswith('qwen-VL-Chat'):
+            torch.manual_seed(1234)
+            self.caption_model.generation_config = GenerationConfig.from_pretrained(self.config.model_path, trust_remote_code=True)
+            query = self.tokenizer.from_list_format([
+                                            {'image': pil_image.temp_file_path}, # Either a local path or an url
+                                            {'text': question_prompt},
+                                    ])
+            captions, history = self.caption_model.chat(self.tokenizer, query=query, history=None)
+            return captions
         elif self.config.caption_model_name.startswith('cogvlm') or self.config.caption_model_name.startswith('cogagent'):
             """Copied and adapted from https://github.com/THUDM/CogVLM/blob/main/basic_demo/cli_demo_hf.py
             """
@@ -323,6 +360,7 @@ class Interrogator():
                 captions = self.tokenizer.decode(tokens[0])
                 captions = captions.split("</s>")[0]
                 return captions
+       
         else:
             inputs = self.caption_processor(images=pil_image, return_tensors="pt").to(self.device)            
             if not self.config.caption_model_name.startswith('git-'):

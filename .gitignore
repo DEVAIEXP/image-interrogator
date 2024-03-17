@@ -124,6 +124,7 @@ celerybeat.pid
 .venv
 env/
 venv/
+venv_wsl/
 ENV/
 env.bak/
 venv.bak/
@@ -166,5 +167,7 @@ tests
 repositories
 repositories_
 venv
+venv2
 stdout.txt
 stderr.txt
+SimSun.ttf

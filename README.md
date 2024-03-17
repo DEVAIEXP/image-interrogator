@@ -8,6 +8,9 @@
 The **IMAGE Interrogator** is a variant of the original [CLIP Interrogator](https://github.com/pharmapsychotic/clip-interrogator) tool that brings all original features and adds other large models like [LLaVa](https://llava-vl.github.io/) and [CogVml](https://github.com/THUDM/CogVLM) for SOTA image captioning. Then you can train with fine-tuning on your datasets or use resulting prompts with text-to-image models like [Stable Diffusion](https://github.com/CompVis/stable-diffusion) on [DreamStudio](https://beta.dreamstudio.ai/) to create cool art!
 
 
+## ⏰ Update
+- **2024.03.17**: New release v1.0.1 - Added support for [moondream1](https://huggingface.co/vikhyatk/moondream1) and [moondream2](https://huggingface.co/vikhyatk/moondream2) models; Added support for [Qwen VL Chat](https://huggingface.co/Qwen/Qwen-VL-Chat). Change to keep the model in memory at each execution. [🚨A clean install is required!🚨](#aditional-parameters-for-installation-scripts) 
+
 ## Installation
 
 Use Python version 3.10.* and have the Python virtual environment installed. For linux users will need to install Tkinter with the follow command: 
@@ -88,3 +91,12 @@ It returns a list of words in each feature and their scores for the given image,
 
 ## Others
 If you update the version of LLaVa, Gradio and PIL dependencies, this tool will not work correctly. When there is a need to update these dependencies, we will update them in our repository. Whenever there is a new update to this repository, it will be necessary to delete the 'repositories' directory and run the installation script again.
+
+### License
+This project is released under the [MIT license](LICENSE).
+
+### Acknowledgement
+This project is based on [CLIP Interrogator](https://github.com/pharmapsychotic/clip-interrogator), Some codes are brought from [LLaVa](https://llava-vl.github.io/). Thanks for their awesome works. 
+
+### Contact
+If you have any questions, please contact: contact@devaiexp.com

@@ -94,6 +94,7 @@ printf "\n%s\n" "${delimiter}"
 printf "Installing other requirements. This could take a few minutes..."
 pip install -r requirements.txt
 pip3 install xformers==0.0.24 --index-url https://download.pytorch.org/whl/cu118
+pip install auto-gptq==0.7.1 --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu118/
 printf "Patching PIL..."
 cp -f ./patches/PIL/Image.py ./venv/lib64/"$(ls ./venv/lib64)"/site-packages/PIL
 printf "\n%s\n" "${delimiter}"

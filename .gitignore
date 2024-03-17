@@ -124,6 +124,7 @@ celerybeat.pid
 .venv
 env/
 venv/
+venv_wsl/
 ENV/
 env.bak/
 venv.bak/
@@ -169,3 +170,4 @@ venv
 venv2
 stdout.txt
 stderr.txt
+SimSun.ttf

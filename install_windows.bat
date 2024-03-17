@@ -50,9 +50,10 @@ echo Installing other requirements. This could take a few minutes...
 python.exe -m pip install --upgrade pip
 pip install -r requirements.txt
 pip uninstall bitsandbytes --yes
-pip install https://huggingface.co/elismasilva/wheels/resolve/main/bitsandbytes-0.41.2.post2-py3-none-win_amd64.whl
+pip install bitsandbytes==0.43.0 --upgrade
 pip install https://huggingface.co/elismasilva/wheels/resolve/main/triton-2.1.0-cp310-cp310-win_amd64.whl
 pip install xformers==0.0.24 --index-url https://download.pytorch.org/whl/cu118 --upgrade
+pip install auto-gptq==0.7.1 --extra-index-url https://huggingface.github.io/autogptq-index/whl/cu118/
 echo Patching PIL...
 copy /y .\patches\PIL\Image.py .\venv\Lib\site-packages\PIL
 echo Patching Gradio...

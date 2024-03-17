@@ -59,7 +59,7 @@ def load_ci():
     if ci:
         del ci
     memory_cleanup()
-    ci = Interrogator(config)
+    ci = Interrogator(config)    
     return ci          
 
 def list_devices() -> List[str]:
@@ -247,23 +247,39 @@ def image_analysis(image, clip_model_name):
 def validate_params(caption_model_name, clip_model_name, device, generate_features, precision_type, load_4bit, load_8bit):
     
     isValid = True 
-        
+    hasCaptionModelChanged = False
+    hasClipModelChanged = False
+
+    # if generate_features != config.generate_features:
+    #     isValid = False if (generate_features and not config.generate_features) else True
+    #     config.generate_features = generate_features        
     if generate_features != config.generate_features:
-        isValid = False if (generate_features and not config.generate_features) else True
-        config.generate_features = generate_features        
-    
+        if(not generate_features and config.generate_features):
+            config.clip_model = None 
+            config.generate_features = False
+        else:
+            config.generate_features = True   
+
     if precision_type != config.dtype:
         config.dtype = precision_type
         isValid = False
-        
-    #if (caption_model_name is not None):    
-    if caption_model_name != config.caption_model_name or (not config.caption_model):
+    
+    if not config.caption_model:    
         config.caption_model_name = caption_model_name
+        config.caption_model = None
         isValid = False
 
-    if clip_model_name != config.clip_model_name:
-        config.clip_model_name = clip_model_name
-        isValid = False
+    #if (caption_model_name is not None):    
+    if caption_model_name != config.caption_model_name:
+        config.caption_model_name = caption_model_name
+        config.caption_model = None
+        hasCaptionModelChanged = True
+
+    if clip_model_name != config.clip_model_name or (not config.clip_model):
+        if generate_features:
+            config.clip_model_name = clip_model_name
+            config.clip_model = None
+            hasClipModelChanged = True
     
     if set_device(device) != config.device:
         config.device = set_device(device)
@@ -277,20 +293,25 @@ def validate_params(caption_model_name, clip_model_name, device, generate_featur
         config.load_8bit = load_8bit
         isValid = False
         
-    return isValid
+    return isValid, hasCaptionModelChanged, hasClipModelChanged
     
 def validate_reload(caption_model_name, clip_model_name, check_lowvram, device, generate_features, precision_type, load_4bit, load_8bit):
     
     if not config:
         load_config(caption_model_name, clip_model_name, device, generate_features, precision_type, load_4bit, load_8bit)
     
-    isValid = validate_params(caption_model_name, clip_model_name, device, generate_features, precision_type, load_4bit, load_8bit)
-    if not isValid:
+    isValid, hasCaptionModelChanged, hasClipModelChanged = validate_params(caption_model_name, clip_model_name, device, generate_features, precision_type, load_4bit, load_8bit)
+    if not isValid: 
         if not check_lowvram:
             load_ci() 
         else:            
             config.apply_low_vram_defaults()                          
             load_ci()   
+    elif hasCaptionModelChanged or hasClipModelChanged:                
+        ci.config = config
+        if hasCaptionModelChanged : ci.load_caption_model()
+        if hasClipModelChanged : ci.load_clip_model()
+    memory_cleanup()    
 
 def get_caption_model_vram(toggle_load_mode, caption_model):    
     VRAM = 0    
@@ -372,7 +393,11 @@ def print_settings(precision_type,
     settings += f"\nTop p: {top_p}"
     settings += f"\nCLIP Model: {clip_model}" if generate_features else ""
     settings += f"\nFeature Mode: {feature_mode}" if generate_features else ""
-    settings += f"\nQuestion prompt: {question_prompt}" if  caption_model.startswith("llava") or caption_model.startswith('cogvlm') or caption_model.startswith('cogagent') or caption_model.startswith("kosmos-2") else ""
+    settings += f"\nQuestion prompt: {question_prompt}" if  caption_model.startswith("llava") \
+    or caption_model.startswith('cogvlm') or caption_model.startswith('cogagent') \
+    or caption_model.startswith("kosmos-2") or caption_model.startswith("moondream") \
+    or caption_model.startswith("qwen-VL-Chat") else ""
+
     print(settings)
     print("-"*100)
     
@@ -494,7 +519,7 @@ def batch_process(folder,
 def get_question_prompt(caption_model_value):
     if caption_model_value.startswith("llava") or caption_model_value.startswith('cogvlm') or caption_model_value.startswith('cogagent') or caption_model_value.startswith("moondream") :
         question_prompt_text = "Provide caption for the image in one sentence. Be detailed but precise."
-    elif caption_model_value.startswith("kosmos-2") :
+    elif caption_model_value.startswith("kosmos-2") or caption_model_value.startswith("qwen-VL-Chat"):
         question_prompt_text = "Describe this image in detail:"            
     else:
         question_prompt_text = None
@@ -579,6 +604,7 @@ def prompt_tab():
             show_prompt = True if (caption_model_value.startswith("llava") 
                                    or caption_model_value.startswith("kosmos-2") 
                                    or caption_model_value.startswith("moondream") 
+                                   or caption_model_value.startswith("qwen-VL-Chat")
                                    or caption_model_value.startswith('cogvlm') 
                                    or caption_model_value.startswith('cogagent')) else False
             
@@ -586,7 +612,11 @@ def prompt_tab():
                 
             outputs=[]
             if caption_model_value.startswith('cogvlm') or caption_model_value.startswith('cogagent'):
-                outputs.append(gr.update(visible=True, choices=['16bit', '4bit'], value='4bit'))    
+                outputs.append(gr.update(visible=True, choices=['16bit', '4bit'], value='4bit'))   
+            elif caption_model_value.startswith('qwen-VL-Chat (4Bit)'):
+                outputs.append(gr.update(visible=True, choices=['4bit'], value='4bit'))   
+            elif caption_model_value.startswith('qwen-VL-Chat'):
+                outputs.append(gr.update(visible=True, choices=['16bit'], value='16bit'))            
             elif caption_model_value.startswith('moondream') :
                 outputs.append(gr.update(visible=True, choices=['16bit'], value='16bit'))    
             else:                
@@ -660,4 +690,4 @@ with gr.Blocks(css=css,title=f"IMAGE Interrogator GUI {release}",theme=gr.themes
         analyze_tab()
 
 
-ui.queue().launch(debug=True,  inline=False,share=args.share)
+ui.queue().launch(debug=True, inbrowser=True, inline=False, share=args.share)

@@ -287,10 +287,14 @@ def validate_params(caption_model_name, clip_model_name, device, generate_featur
              
     if load_4bit != config.load_4bit:
         config.load_4bit = load_4bit
+        config.caption_model = None
+        config.clip_model = None
         isValid = False     
     
-    if load_8bit != config.load_8bit:
+    if load_8bit != config.load_8bit:        
         config.load_8bit = load_8bit
+        config.caption_model = None
+        config.clip_model = None
         isValid = False
         
     return isValid, hasCaptionModelChanged, hasClipModelChanged

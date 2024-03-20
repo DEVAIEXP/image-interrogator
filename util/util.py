@@ -31,3 +31,4 @@ def has_win_os():
     if sys.platform == 'win32' or 'WSL2' in platform_name.release:
         return True
     return False
+

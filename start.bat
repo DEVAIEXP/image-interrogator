@@ -1,5 +1,6 @@
 @echo off
-SET PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_mb:256
+SET PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True,garbage_collection_threshold:0.9,max_split_size_mb:256
+SET PYTHONWARNINGS=ignore
 SET CUDA_VISIBLE_DEVICES=0
 SET USE_VENV=1
 SET VENV_DIR="%~dp0%venv"

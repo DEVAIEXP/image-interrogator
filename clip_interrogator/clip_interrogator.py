@@ -209,9 +209,12 @@ class Interrogator():
     def load_clip_model(self):
         start_time = time.time()
         config = self.config
+        
+        clip_model_name, clip_model_pretrained_name = config.clip_model_name.split('/', 2) 
 
-        clip_model_name, clip_model_pretrained_name = config.clip_model_name.split('/', 2)        
-        cached_model_path = os.path.join(self.config.cache_model_path, config.clip_model_name)
+        #config.clip_model_path = config.clip_model_name      
+        if self.config.download_models_to_cache:
+            cached_model_path = os.path.join(self.config.cache_model_path, config.clip_model_name)
         
         if self.config.download_models_to_cache and not os.path.exists(cached_model_path):
             os.makedirs(cached_model_path, exist_ok=True)  
@@ -226,7 +229,7 @@ class Interrogator():
                 precision='fp16' if config.device == 'cuda:0' else 'fp32',
                 device=config.device,
                 jit=False,
-                cache_dir=(cached_model_path if self.config.download_models_to_cache and os.path.exists(cached_model_path) else config.clip_model_path)
+                cache_dir=(cached_model_path if self.config.download_models_to_cache and os.path.exists(cached_model_path) else None)
             )
             self.clip_model.eval()
         else:

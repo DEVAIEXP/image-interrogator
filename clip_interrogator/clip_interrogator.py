@@ -149,7 +149,7 @@ class Interrogator():
             if self.config.load_8bit:
                 kwargs['load_in_8bit'] = True
             elif self.config.load_4bit:
-                kwargs['load_in_4bit'] = True
+                #kwargs['load_in_4bit'] = True
                 kwargs['quantization_config'] = BitsAndBytesConfig(
                     load_in_4bit=True,
                     bnb_4bit_compute_dtype=self.dtype,
@@ -170,7 +170,7 @@ class Interrogator():
                 self.caption_processor = Kosmos2Processor.from_pretrained(self.config.model_path)
             elif self.config.caption_model_name.startswith('cogvlm') or self.config.caption_model_name.startswith('cogagent'):
                 self.tokenizer = LlamaTokenizer.from_pretrained("lmsys/vicuna-7b-v1.5", use_fast=False, trust_remote_code=True)
-                caption_model = AutoModelForCausalLM.from_pretrained(self.config.model_path, low_cpu_mem_usage=True, local_files_only=self.config.download_models_to_cache, torch_dtype=self.dtype, trust_remote_code=True, **kwargs)
+                caption_model = AutoModelForCausalLM.from_pretrained(self.config.model_path, low_cpu_mem_usage=True, local_files_only=self.config.download_models_to_cache, torch_dtype=self.dtype, trust_remote_code=True, **kwargs)                
             elif self.config.caption_model_name.startswith('moondream'):
                 self.tokenizer = CodeGenTokenizerFast.from_pretrained(self.config.model_path, use_fast=False, trust_remote_code=True)
                 caption_model = AutoModelForCausalLM.from_pretrained(self.config.model_path, trust_remote_code=True, local_files_only=self.config.download_models_to_cache, torch_dtype=self.dtype, **kwargs)
@@ -191,7 +191,7 @@ class Interrogator():
             self.config.caption_model = caption_model      
         else:
             self.caption_model = self.config.caption_model
-            self.config.caption_model = caption_model      
+            self.config.caption_model = self.caption_model      
             if self.config.caption_processor:
                 self.caption_processor = self.config.caption_processor
             if self.config.tokenizer:
@@ -209,9 +209,12 @@ class Interrogator():
     def load_clip_model(self):
         start_time = time.time()
         config = self.config
+        
+        clip_model_name, clip_model_pretrained_name = config.clip_model_name.split('/', 2) 
 
-        clip_model_name, clip_model_pretrained_name = config.clip_model_name.split('/', 2)        
-        cached_model_path = os.path.join(self.config.cache_model_path, config.clip_model_name)
+        #config.clip_model_path = config.clip_model_name      
+        if self.config.download_models_to_cache:
+            cached_model_path = os.path.join(self.config.cache_model_path, config.clip_model_name)
         
         if self.config.download_models_to_cache and not os.path.exists(cached_model_path):
             os.makedirs(cached_model_path, exist_ok=True)  
@@ -226,7 +229,7 @@ class Interrogator():
                 precision='fp16' if config.device == 'cuda:0' else 'fp32',
                 device=config.device,
                 jit=False,
-                cache_dir=(cached_model_path if self.config.download_models_to_cache and os.path.exists(cached_model_path) else config.clip_model_path)
+                cache_dir=(cached_model_path if self.config.download_models_to_cache and os.path.exists(cached_model_path) else None)
             )
             self.clip_model.eval()
         else:
@@ -342,6 +345,11 @@ class Interrogator():
         elif self.config.caption_model_name.startswith('cogvlm') or self.config.caption_model_name.startswith('cogagent'):
             """Copied and adapted from https://github.com/THUDM/CogVLM/blob/main/basic_demo/cli_demo_hf.py
             """
+            if self.config.caption_model_name.startswith('cogagent'):
+                question_prompt = f'<EOI>Question: {question_prompt} Answer:'
+            else:
+                question_prompt = f'Question: {question_prompt} Answer:'
+
             input_by_model = self.caption_model.build_conversation_input_ids(self.tokenizer, query=question_prompt, history=[], images=[pil_image])
 
             inputs = {
@@ -354,6 +362,7 @@ class Interrogator():
                 inputs['cross_images'] = [[input_by_model['cross_images'][0].to(self.device).to(self.dtype)]]
             gen_kwargs = {"max_length": caption_max_length,                          
                           "do_sample": False} #"temperature": 0.9,
+            
             with torch.no_grad():
                 tokens = self.caption_model.generate(**inputs, **gen_kwargs)
                 tokens = tokens[:, inputs['input_ids'].shape[1]:]

@@ -13,7 +13,7 @@ from util.gui import (
     open_folder)
 from clip_interrogator import Config, Interrogator, list_caption_models, list_clip_models
 from util.generate import generate_captions
-from util.util import memory_cleanup,get_reserved_memory, get_used_memory, get_total_memory, has_win_os
+from util.util import memory_cleanup, get_used_memory, has_win_os
 
 
 try:
@@ -305,7 +305,7 @@ def validate_reload(caption_model_name, clip_model_name, check_lowvram, device, 
         load_config(caption_model_name, clip_model_name, device, generate_features, precision_type, load_4bit, load_8bit)
     
     isValid, hasCaptionModelChanged, hasClipModelChanged = validate_params(caption_model_name, clip_model_name, device, generate_features, precision_type, load_4bit, load_8bit)
-    if not isValid: 
+    if not ci or not isValid: 
         if not check_lowvram:
             load_ci() 
         else:            
@@ -370,6 +370,7 @@ def print_settings(precision_type,
                    generate_features, 
                    check_only_caption,                   
                    check_txt_caption,
+                   check_original_path,
                    check_dataset,
                    dataset_name,
                    caption_model,
@@ -378,7 +379,7 @@ def print_settings(precision_type,
                    max_new_tokens, 
                    clip_model,
                    feature_mode,
-                   question_prompt
+                   question_prompt                   
                    ):
     print("Running with this settings...")
     print("-"*100)
@@ -389,6 +390,7 @@ def print_settings(precision_type,
     settings += f"\nInclude image features in the prompt: {generate_features}"
     settings += f"\nDon't save dataset images: {check_only_caption}"
     settings += f"\nGenerate individual caption file: {check_txt_caption}"
+    settings += f"\nGenerate caption in the original path: {check_original_path}"
     settings += f"\nGenerate dataset: {check_dataset}"
     settings += f"\nDataset Name: {dataset_name}"
     settings += f"\nCaption Model: {caption_model}"
@@ -421,7 +423,7 @@ def image_to_prompt(image,
                     max_new_tokens, 
                     check_txt_caption, 
                     check_lowvram, 
-                    check_only_caption,
+                    check_only_caption,                                        
                     test_mode=False):
     try:
                 
@@ -443,12 +445,9 @@ def image_to_prompt(image,
         _precision_type=torch.float32 if device=='cpu' else (torch.float16 if precision_type=='FP16' else torch.bfloat16)
         max_new_tokens = 2048 if max_new_tokens == 0 else max_new_tokens
         
-        print_settings(precision_type, load_mode, device, check_lowvram, generate_features, check_only_caption, check_txt_caption, check_dataset, dataset_name, caption_model_name, temperature, top_p,max_new_tokens, clip_model_name, feature_mode, question_prompt)
+        print_settings(precision_type, load_mode, device, check_lowvram, generate_features, check_only_caption, check_txt_caption, False, check_dataset, dataset_name, caption_model_name, temperature, top_p,max_new_tokens, clip_model_name, feature_mode, question_prompt)
         validate_reload(caption_model_name, clip_model_name, check_lowvram, device, generate_features, _precision_type, load_4bit, load_8bit)                                  
-        prompt = generate_captions(ci, feature_mode, question_prompt, temperature, top_p, max_new_tokens, check_dataset, dataset_name, [image], check_txt_caption, check_only_caption, test_mode)
-        
-        if not test_mode and has_win_os():            
-            subprocess.run(fr'explorer.exe "outputs\images"', shell=True)            
+        prompt = generate_captions(ci, feature_mode, question_prompt, temperature, top_p, max_new_tokens, check_dataset, dataset_name, [image], check_txt_caption, check_only_caption, False, test_mode)
         
         status ="Image process completed!"         
         print(status)       
@@ -476,8 +475,9 @@ def batch_process(folder,
                   max_new_tokens, 
                   check_txt_caption, 
                   check_lowvram, 
-                  check_only_caption):
-    from PIL import Image
+                  check_only_caption,
+                  check_original_path=False):
+    
         
     try: 
         if not os.path.isdir(folder):
@@ -492,10 +492,8 @@ def batch_process(folder,
         global ci
         for filename in os.listdir(folder):
             if filename.endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')):
-                img_path = os.path.join(folder, filename)
-                image = Image.open(img_path).convert('RGB')                
-                image.orig_file_name = filename
-                images.append(image)
+                img_path = os.path.join(folder, filename)               
+                images.append(img_path)
 
         if len(images) <=0:
             raise Exception("The folder has no images to be processed!")
@@ -504,12 +502,9 @@ def batch_process(folder,
         load_4bit=True if load_mode=='4bit' else False
         _precision_type=torch.float32 if device=='cpu' else (torch.float16 if precision_type=='FP16' else torch.bfloat16)
         
-        print_settings(precision_type, load_mode, device, check_lowvram, generate_features, check_only_caption, check_txt_caption, check_dataset, dataset_name, caption_model_name, temperature, top_p,max_new_tokens, clip_model_name, feature_mode, question_prompt)
+        print_settings(precision_type, load_mode, device, check_lowvram, generate_features, check_only_caption, check_txt_caption, check_original_path, check_dataset, dataset_name, caption_model_name, temperature, top_p,max_new_tokens, clip_model_name, feature_mode, question_prompt)
         validate_reload(caption_model_name, clip_model_name, check_lowvram, device, generate_features, _precision_type, load_4bit, load_8bit)                                
-        generate_captions(ci, feature_mode, question_prompt, temperature, top_p, max_new_tokens, check_dataset, dataset_name, images, check_txt_caption, check_only_caption)
-        
-        if has_win_os():
-            subprocess.run(fr'explorer.exe "outputs\images"', shell=True)
+        generate_captions(ci, feature_mode, question_prompt, temperature, top_p, max_new_tokens, check_dataset, dataset_name, images, check_txt_caption, check_only_caption, check_original_path)
         
         status ="Image process completed!"         
         print(status)       
@@ -521,7 +516,9 @@ def batch_process(folder,
         pass
     
 def get_question_prompt(caption_model_value):
-    if caption_model_value.startswith("llava") or caption_model_value.startswith('cogvlm') or caption_model_value.startswith('cogagent') or caption_model_value.startswith("moondream") :
+    if caption_model_value.startswith('cogagent'):
+        question_prompt_text = 'Provide caption for the image in one sentence. Be detailed but precise.'
+    elif caption_model_value.startswith("llava") or caption_model_value.startswith('cogvlm') or  caption_model_value.startswith("moondream") :
         question_prompt_text = "Provide caption for the image in one sentence. Be detailed but precise."
     elif caption_model_value.startswith("kosmos-2") or caption_model_value.startswith("qwen-VL-Chat"):
         question_prompt_text = "Describe this image in detail:"            
@@ -563,6 +560,7 @@ def prompt_tab():
                     with gr.Row():
                         check_only_caption = gr.Checkbox(label="Don't save dataset images", value=False)
                         check_txt_caption = gr.Checkbox(label="Generate individual caption file", value=True)
+                        check_original_path = gr.Checkbox(label="Generate caption in the original path instead of the output folder", value=False)
                     with gr.Row():
                         check_dataset = gr.Checkbox(label="Generate dataset",value=False)        
                         dataset_name = gr.Textbox(label="Dataset name",value='Default')
@@ -664,7 +662,7 @@ def prompt_tab():
         generate_button = gr.Button("Generate prompt for single image")
         batch_button = gr.Button("Batch process for folder")        
         generate_button.click(image_to_prompt, inputs=[image, question_prompt, check_include_features, check_dataset, dataset_name, feature_mode, precision_type, load_mode, clip_model, caption_model, devices, temperature, top_p, max_new_tokens, check_txt_caption, check_lowvram, check_only_caption], outputs=[status,prompt])        
-        batch_button.click(batch_process, inputs=[folder_path, question_prompt, check_include_features, check_dataset, dataset_name, feature_mode, precision_type, load_mode, clip_model, caption_model,devices, temperature, top_p, max_new_tokens, check_txt_caption, check_lowvram, check_only_caption], outputs=status)
+        batch_button.click(batch_process, inputs=[folder_path, question_prompt, check_include_features, check_dataset, dataset_name, feature_mode, precision_type, load_mode, clip_model, caption_model,devices, temperature, top_p, max_new_tokens, check_txt_caption, check_lowvram, check_only_caption, check_original_path], outputs=status)
         with gr.Row():
             test_all_caption_models_button = gr.Button("Test all caption models")
             test_all_caption_models_button.click(test_all_caption_models, inputs=[image, load_mode, devices], outputs=status)      

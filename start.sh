@@ -1,4 +1,5 @@
-export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_mb:256
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True,garbage_collection_threshold:0.9,max_split_size_mb:256
+export PYTHONWARNINGS=ignore
 export CUDA_VISIBLE_DEVICES=0
 export LD_LIBRARY_PATH=/usr/lib/wsl/lib
 

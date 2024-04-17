@@ -71,6 +71,7 @@ The `Generate options` lets you enable/disable resources that may be generated d
 * `Include image features in the prompt`: Enable the Features tab where it is possible to select OpenCLIP pretrained CLIP models. It will add image analysis result features such as (artists, flavors, media, movements, trends, negative prompt). Note: for negative prompts, the caption model will be ignored.
 * `Don't save dataset images`: This will disable copying of the image in the caption output path.
 * `Generate individual caption file`: When enabled, this generates individual '.txt' caption files for each image.
+* `Generate caption in the original path instead of the output folder`: When enable will save caption files and datasets files in the image original path. (Only for batch mode).
 * `Generate dataset`: This will compile a dataset into the output path so that it can be loaded into hugging-face datasets or used in model training.
 * `Dataset name`: The name for dataset folder in output path.
 
